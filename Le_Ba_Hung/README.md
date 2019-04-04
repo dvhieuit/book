@@ -11,3 +11,6 @@ All: https://docs.google.com/spreadsheets/d/1QwGXrd_-6w0vL95gZ8iPmzzxSuEt5PLq30T
 
 
 4. Hard issues:
+
+
+5. Demo requirement:
