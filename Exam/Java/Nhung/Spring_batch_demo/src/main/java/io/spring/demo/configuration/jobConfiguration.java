@@ -12,7 +12,6 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
 @EnableBatchProcessing
@@ -23,15 +22,13 @@ public class jobConfiguration {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
-    @Autowired
-    private DataSourceTransactionManager mysqlTransaction;
 
     @Bean
     public Step step1(){
         return stepBuilderFactory.get("step1")
                 .tasklet(new Tasklet() {
                     @Override
-                    public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
+                    public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) {
                         System.out.println("Hello!");
                         return RepeatStatus.CONTINUABLE;
                     }
