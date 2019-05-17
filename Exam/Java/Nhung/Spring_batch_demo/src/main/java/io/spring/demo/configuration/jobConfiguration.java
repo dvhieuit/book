@@ -13,7 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 @Configuration
 @EnableBatchProcessing
 public class jobConfiguration {
@@ -22,9 +23,6 @@ public class jobConfiguration {
 
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
-
-    @Autowired
-    private DataSourceTransactionManager mysqlTransaction;
 
     @Bean
     public Step step1(){
