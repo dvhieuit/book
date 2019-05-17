@@ -29,7 +29,7 @@ public class jobConfiguration {
         return stepBuilderFactory.get("step1")
                 .tasklet(new Tasklet() {
                     @Override
-                    public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
+                    public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) {
                         System.out.println("Hello!");
                         return RepeatStatus.CONTINUABLE;
                     }
