@@ -1,6 +1,6 @@
-def palindrome? sentence
-  sentence.downcase!.gsub!(" ", "") == sentence.reverse
+def palindrome?(sentence)
+  sentence.downcase!.gsub!(' ', '') == sentence.reverse
 end
 
-sentence = "Never odd or even"
+sentence = 'Never odd or even'
 puts palindrome?(sentence)
