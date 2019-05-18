@@ -1,5 +1,5 @@
-def length_finder string_arr
-  string_arr.map {|x| x.length}
+def length_finder(string_arr)
+  string_arr.map { |x| x.length }
 end
 
 string_arr = ['Ruby','Rails','C42']
