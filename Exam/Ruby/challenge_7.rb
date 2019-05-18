@@ -1,4 +1,4 @@
-def array_of_fixnums? arr
+def array_of_fixnums?(arr)
   arr.select { |x| x.is_a?(Fixnum) } === arr
 end
 
