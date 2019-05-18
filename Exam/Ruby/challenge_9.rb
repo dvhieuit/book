@@ -13,4 +13,4 @@ class MyArray
 end
 
 my_array = MyArray.new([1, 2, 3])
-puts my_array.sum(0) {|n| n ** 2}
+puts my_array.sum(0) { |n| n ** 2 }
