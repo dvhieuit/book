@@ -1,4 +1,4 @@
-def kaprekar? num
+def kaprekar?(num)
   square = num ** 2
   left = square.to_s[0..(square.to_s.length - num.to_s.length - 1)]
   right = square.to_s[left.length..(square.to_s.length - 1)]
