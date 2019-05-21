@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.batch.operations.JobExecutionAlreadyCompleteException;
 
 @Component
 public class JobNoticeCompletionListener extends JobExecutionListenerSupport {
