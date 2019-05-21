@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import io.spring.demo.listener.JobNoticeCompletionListener;
 import io.spring.demo.model.Customer;
 import io.spring.demo.processor.CustomerItemProcessor;
+import io.spring.demo.utils.CustomerFieldSetMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -16,13 +17,13 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 
 @Configuration
 @EnableBatchProcessing
@@ -60,27 +61,36 @@ public class BatchConfiguration {
     }
 
     @Bean
+    @StepScope
     public FlatFileItemReader<Customer> reader(){
-        log.info("read file");
-        FlatFileItemReader<Customer> reader =new FlatFileItemReader<>();
+        log.info("reader");
+
+        FlatFileItemReader<Customer> reader = new FlatFileItemReader<>();
+
+        reader.setLinesToSkip(1);
         reader.setResource(new ClassPathResource("customer_data.csv"));
-        reader.setLineMapper(new DefaultLineMapper<Customer>(){{
-            setLineTokenizer(new DelimitedLineTokenizer(){{
-                setNames(new String[]{ "id", "firstName", "lastName", "email", "phone", "address"});
-            }});
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<Customer>(){{
-                setTargetType(Customer.class);
-        }});
-        }});
+
+        DefaultLineMapper<Customer> customerLineMapper = new DefaultLineMapper<>();
+
+        DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+        tokenizer.setNames(new String[]{"id", "firstName", "lastName", "email", "phone", "address"});
+
+        customerLineMapper.setLineTokenizer(tokenizer);
+        customerLineMapper.setFieldSetMapper(new CustomerFieldSetMapper());
+        customerLineMapper.afterPropertiesSet();
+
+        reader.setLineMapper(customerLineMapper);
         return reader;
     }
 
     @Bean
+    @StepScope
     public CustomerItemProcessor processor(){
         return new CustomerItemProcessor();
     }
 
     @Bean
+    @StepScope
     public JdbcBatchItemWriter<Customer> writer(){
         log.info("write into database");
         JdbcBatchItemWriter<Customer> writer = new JdbcBatchItemWriter<>();
