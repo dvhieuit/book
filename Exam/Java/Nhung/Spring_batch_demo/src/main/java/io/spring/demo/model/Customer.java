@@ -1,14 +1,14 @@
 package io.spring.demo.model;
 
 public class Customer {
-    private Integer id;
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private String address;
 
-    public Customer(Integer id, String firstName, String lastName, String email, String phone, String address){
+    public Customer(String id, String firstName, String lastName, String email, String phone, String address){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -16,8 +16,8 @@ public class Customer {
         this.phone = phone;
         this.address = address;
     }
-    public Integer getId(){ return id;}
-    public void setId(Integer id) { this.id = id; }
+    public String getId(){ return id;}
+    public void setId(String id) { this.id = id; }
 
     public String getFirstName(){ return firstName;}
     public void setFirstName(String firstName) { this.firstName = firstName; }

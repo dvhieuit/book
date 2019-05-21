@@ -21,14 +21,14 @@
 
 DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `customer` (
-  `id` int(45) NOT NULL,
-  `first_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+                        `id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `first_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `address` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
