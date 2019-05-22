@@ -164,8 +164,8 @@ body a {
 .content .left .icon .fa-youtube:hover {
   color: #E73030;
 }
-.content .left .icon .fa-facebook-messenger:hover {
-  color: #3086CA;
+.fa-facebook-messenger:hover {
+  color: #3086CA !important;
 }
 .content .left .icon i {
   font-size: 37px;
@@ -213,9 +213,6 @@ body a {
 }
 .content .right .icon .fa-youtube:hover {
   color: #E73030;
-}
-.content .right .icon .fa-facebook-messenger:hover {
-  color: #3086CA;
 }
 .content .right .img-right {
   padding-top: 30px;
