@@ -70,7 +70,20 @@ header > h4 {
     opacity: 50%;
 
 }
+.middle_nav > ul > li > a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
 
+.middle_nav > ul > li > a:active {
+    color: orange;
+}
+
+.middle_nav > ul > li > a:visited {
+    color: orange;
+}
 .main {
     display: flex;
     background: #F4F4F4;
@@ -229,7 +242,10 @@ section > header > ul > li > a {
     text-decoration: none;
     color: black;
 }
-
+section >figure >img{
+    width:100%;
+    height: auto;
+}
 aside {
     background: white;
     width: 30%;
