@@ -22,8 +22,6 @@ class CreateProductsTable extends Migration
             $table->text('image');
             $table->integer('catalog_id');
             $table->integer('user_id');
-
-
         });
     }
 
