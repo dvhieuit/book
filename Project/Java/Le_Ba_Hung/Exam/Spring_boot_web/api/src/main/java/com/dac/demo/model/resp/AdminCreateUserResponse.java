@@ -25,21 +25,11 @@ public class AdminCreateUserResponse {
     @Setter
     private String imageURL;
 
-    @Getter
-    @Setter
-    private String status;
-
-    @Getter
-    @Setter
-    private String role;
-
-    public AdminCreateUserResponse(int id, String firstName, String lastName, String email, String imageURL, String status, String role) {
+    public AdminCreateUserResponse(int id, String firstName, String lastName, String email, String imageURL) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.imageURL = imageURL;
-        this.status = status;
-        this.role = role;
     }
 }
