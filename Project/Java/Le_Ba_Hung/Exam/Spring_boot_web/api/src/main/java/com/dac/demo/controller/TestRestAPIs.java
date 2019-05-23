@@ -11,9 +11,9 @@ public class TestRestAPIs {
         return "welcome";
     }
     @CrossOrigin(origins = "http://localhost:3001")
-    @GetMapping("/login")
+    @GetMapping("/test")
     public String login(){
-        return "login";
+        return "test";
     }
     @GetMapping("/user")
     public String getUser(){
