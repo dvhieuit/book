@@ -27,6 +27,14 @@ public class EmployeeEntity {
     @Column
     private boolean deleted = false;
 
+    @ManyToOne
+    @JoinColumn(name = "statusID")
+    private StatusEntity status;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roleID")
+    private RoleEntity role;
+
     public EmployeeEntity() {
         this.id = 0;
     }
@@ -37,5 +45,22 @@ public class EmployeeEntity {
         this.email = email;
         this.password = password;
         this.imageURL = imageURL;
+    }
+    public EmployeeEntity(String firstName, String lastName, String email, String password, StatusEntity status) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+    }
+
+    public EmployeeEntity(String firstName, String lastName, String email, String password, String imageURL, StatusEntity status, RoleEntity role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.imageURL = imageURL;
+        this.status = status;
+        this.role = role;
     }
 }
