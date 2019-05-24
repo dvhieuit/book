@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "status")
@@ -24,5 +25,9 @@ public class StatusEntity {
 
     public StatusEntity() {
     }
-
+	
+	@OneToMany(mappedBy = "status")
+	@Setter
+    @Getter
+    private List<EmployeeEntity> employeeEntityList;
 }

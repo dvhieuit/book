@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "employee")
+@Table(name = "user")
 @Getter
 @Setter
 public class EmployeeEntity {
@@ -15,9 +15,9 @@ public class EmployeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    private String firstName;
+    private String fullName;
     @Column
-    private String lastName;
+    private String phoneNumber;
     @Column
     private String email;
     @Column
@@ -28,35 +28,35 @@ public class EmployeeEntity {
     private boolean deleted = false;
 
     @ManyToOne
-    @JoinColumn(name = "statusID")
+    @JoinColumn(name = "status_id")
     private StatusEntity status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "roleID")
+    @JoinColumn(name = "role_id")
     private RoleEntity role;
 
     public EmployeeEntity() {
         this.id = 0;
     }
 
-    public EmployeeEntity(String firstName, String lastName, String email, String password, String imageURL) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public EmployeeEntity(String fullName, String phoneNumber, String email, String password, String imageURL) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.imageURL = imageURL;
     }
-    public EmployeeEntity(String firstName, String lastName, String email, String password, StatusEntity status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public EmployeeEntity(String fullName, String phoneNumber, String email, String password, StatusEntity status) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.status = status;
     }
 
-    public EmployeeEntity(String firstName, String lastName, String email, String password, String imageURL, StatusEntity status, RoleEntity role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public EmployeeEntity(String fullName, String phoneNumber, String email, String password, String imageURL, StatusEntity status, RoleEntity role) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.imageURL = imageURL;

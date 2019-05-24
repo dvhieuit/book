@@ -23,8 +23,8 @@ public class AdminController {
     @CrossOrigin(origins = "http://localhost:3001")
     @PostMapping("/create")
     public ResponseEntity<ServiceResult> createEmployee(@Valid @RequestBody AdminCreateUserRequest request) {
-        return new ResponseEntity<>(adminService.createEmployee(request.getFirstName(),
-                request.getLastName(),
+        return new ResponseEntity<>(adminService.createEmployee(request.getFullName(),
+                request.getPhoneNumber(),
                 request.getEmail(),
                 request.getPassword(),
                 request.getImageURL(),

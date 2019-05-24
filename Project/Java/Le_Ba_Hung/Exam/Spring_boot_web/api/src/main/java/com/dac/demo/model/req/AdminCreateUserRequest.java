@@ -6,10 +6,10 @@ import lombok.Setter;
 public class AdminCreateUserRequest {
     @Getter
     @Setter
-    private String firstName;
+    private String fullName;
     @Getter
     @Setter
-    private String lastName;
+    private String phoneNumber;
     @Getter
     @Setter
     private String email;

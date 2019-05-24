@@ -11,11 +11,11 @@ public class AdminCreateUserResponse {
 
     @Getter
     @Setter
-    private String firstName;
+    private String fullName;
 
     @Getter
     @Setter
-    private String lastName;
+    private String phoneNumber;
 
     @Getter
     @Setter
@@ -25,10 +25,10 @@ public class AdminCreateUserResponse {
     @Setter
     private String imageURL;
 
-    public AdminCreateUserResponse(int id, String firstName, String lastName, String email, String imageURL) {
+    public AdminCreateUserResponse(int id, String fullName, String phoneNumber, String email, String imageURL) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.imageURL = imageURL;
     }

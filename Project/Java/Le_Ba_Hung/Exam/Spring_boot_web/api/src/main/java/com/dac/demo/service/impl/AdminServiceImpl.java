@@ -21,22 +21,22 @@ public class AdminServiceImpl implements AdminService {
     PasswordEncoder encoder;
 
      @Override
-    public ServiceResult createEmployee(String firstName, String lastName, String email, String password,
+    public ServiceResult createEmployee(String fullName, String phoneNumber, String email, String password,
                                         String imageURL, String statusName, String roleName) {
         ServiceResult result = new ServiceResult();
-        if (firstName != null && lastName != null && email != null && password != null &&
+        if (fullName != null && phoneNumber != null && email != null && password != null &&
                 statusName != null && roleName != null) {
 
 
                 boolean isEmailExisted = employeeRepository.existsByEmail(email);
                 if (!isEmailExisted) {
-                    EmployeeEntity employee = new EmployeeEntity(firstName, lastName, email,
+                    EmployeeEntity employee = new EmployeeEntity(fullName, phoneNumber, email,
                             encoder.encode(password),
                             imageURL);
                     employeeRepository.save(employee);
                     AdminCreateUserResponse response = new AdminCreateUserResponse(employee.getId(),
-                            employee.getFirstName(),
-                            employee.getLastName(),
+                            employee.getFullName(),
+                            employee.getPhoneNumber(),
                             employee.getEmail(),
                             employee.getImageURL());
 
