@@ -3,12 +3,16 @@ package com.dac.demo.service.impl;
 import com.dac.demo.constant.AdminUserCreateConst;
 import com.dac.demo.entity.*;
 import com.dac.demo.model.ServiceResult;
+import com.dac.demo.model.enums.RoleName;
 import com.dac.demo.model.resp.*;
 import com.dac.demo.repository.*;
 import com.dac.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -20,7 +24,35 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     PasswordEncoder encoder;
 
-     @Override
+    private AdminGetAllCustomerResponse createGetAllCustomerResponse(EmployeeEntity entity) {
+        return new AdminGetAllCustomerResponse(entity.getId(),
+                entity.getFullName(),
+                entity.getPhoneNumber(),
+                entity.getEmail(),
+                entity.getStatus().getName().name());
+
+    }
+
+    private List<AdminGetAllCustomerResponse> createCustomerGetResponseList() {
+        List<EmployeeEntity> customerList = employeeRepository.findByDeletedAndRoleName(false,
+                RoleName.ROLE_CUSTOMER);
+        List<AdminGetAllCustomerResponse> responseList = new ArrayList<>();
+        for (EmployeeEntity entity : customerList) {
+            responseList.add(createGetAllCustomerResponse(entity));
+        }
+        return responseList;
+    }
+
+    @Override
+    public ServiceResult getAllCustomer() {
+        ServiceResult result = new ServiceResult();
+        List<AdminGetAllCustomerResponse> employeeEntityList = createCustomerGetResponseList();
+        result.setMessage("Get all customers successfully");
+        result.setData(employeeEntityList);
+        return result;
+    }
+
+    @Override
     public ServiceResult createEmployee(String fullName, String phoneNumber, String email, String password,
                                         String imageURL, String statusName, String roleName) {
         ServiceResult result = new ServiceResult();

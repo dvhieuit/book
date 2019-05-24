@@ -19,10 +19,10 @@ public class UserPrincipal implements UserDetails {
     private int id;
 
     @Getter
-    private String firstName;
+    private String fullName;
 
     @Getter
-    private String lastName;
+    private String phoneNumber;
 
     @Getter
     private String email;
@@ -32,10 +32,10 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(int id, String firstName, String lastName, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(int id, String fullName, String phoneNumber, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.authorities = authorities;

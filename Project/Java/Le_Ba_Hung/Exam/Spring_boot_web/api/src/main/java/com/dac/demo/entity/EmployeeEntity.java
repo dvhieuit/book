@@ -14,15 +14,15 @@ public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(name = "full_name")
     private String fullName;
-    @Column
+    @Column(name = "phone_number")
     private String phoneNumber;
     @Column
     private String email;
-    @Column
+    @Column(name = "pass")
     private String password;
-    @Column
+    @Column(name = "imageURL")
     private String imageURL;
     @Column
     private boolean deleted = false;
