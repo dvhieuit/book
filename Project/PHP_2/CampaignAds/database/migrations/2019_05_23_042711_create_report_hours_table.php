@@ -16,7 +16,7 @@ class CreateReportHoursTable extends Migration
         Schema::create('ReportHours', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
             $table->integer('campaign_id');
-            $table->integer('date_time');
+            $table->dateTime('date_time');
             $table->integer('sum_views');
             $table->integer('sum_clicks');
         });
