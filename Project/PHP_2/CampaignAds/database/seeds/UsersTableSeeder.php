@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -11,16 +12,20 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
+
+
     public function run()
     {
-        $faker = new Faker\Generator();
-        DB::table('Users')->insert([
-            'full_name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'pass' => bcrypt('secret'),
-            'phone_number'=>$faker->addProvider(new Faker\Provider\en_US\PhoneNumber($faker)),
-            'role_id'=>1,
-            'remember_token'=>Str::random(100)
-        ]);
+        $faker = $faker = Faker\Factory::create();
+        for($i=1;$i<100;$i++){
+            DB::table('Users')->insert([
+                'full_name' =>$faker->name,
+                'email' => $faker->email,
+                'pass' => bcrypt('secret'),
+                'phone_number' => $faker->phoneNumber,
+                'role_id' => $i%2,
+                'remember_token' => Str::random(100),
+            ]);
+        }
     }
 }
