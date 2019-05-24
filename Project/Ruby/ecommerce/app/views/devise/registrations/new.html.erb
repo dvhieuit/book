@@ -9,33 +9,36 @@
               <p class="alert"><%= alert %></p>
             </div>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "form-signin jquery-validation-form"}) do |f| %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "form-signin form_user"}) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="form-label-group field">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+                <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", "data-error" => "#erremail" %>
                 <%= f.label :email %>
+                <div class="error-signup" id="erremail"></div>
               </div>
 
-              <%= f.label :full_name %>
               <div class="form-label-group field">
-                <%= f.text_field :full_name, autofocus: true, class: "form-control", placeholder: "" %>
+                <%= f.text_field :full_name, autofocus: true, class: "form-control", placeholder: "Full name", "data-error" => "#errname" %>
+                <%= f.label :full_name %>
+                <div class="error-signup" id="errname"></div>
               </div>
-              <div>loi gi do</div>
-              <div class="errorTxt"></div>
               <div class="form-label-group field">
-                <%= f.text_field :phone_number, autofocus: true, class: "form-control", placeholder: "Phone number" %>
+                <%= f.text_field :phone_number, autofocus: true, class: "form-control", placeholder: "Phone number", "data-error" => "#errphone" %>
                 <%= f.label :phone_number %>
+                <div class="error-signup" id="errphone"></div>
               </div>
 
               <div class="form-label-group field">
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+                <%= f.password_field :password, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Password", "data-error" => "#err-password" %>
                 <%= f.label :password %>
+                <div class="error-signup" id="err-password"></div>
               </div>
 
               <div class="form-label-group field">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password confirmation" %>
-                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Password confirmation", "data-error" => "#err-pass-confirm" %>
+                <%= f.label :password_confirmation %>
+                <div class="error-signup" id="err-pass-confirm"></div><br>
               </div>
 
               <div class="actions">
