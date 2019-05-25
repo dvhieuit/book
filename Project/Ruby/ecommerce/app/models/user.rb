@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :products, dependent: :destroy
+  has_many :campaigns, dependent: :destroy
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :validatable, :confirmable
 

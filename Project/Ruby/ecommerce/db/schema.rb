@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_045812) do
+ActiveRecord::Schema.define(version: 2019_05_25_162354) do
+
+  create_table "campaign_details", force: :cascade do |t|
+    t.integer "views"
+    t.integer "clicks"
+    t.integer "campaign_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_campaign_details_on_campaign_id"
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.integer "status", default: 0
+    t.datetime "start_day"
+    t.datetime "end_day"
+    t.integer "budget"
+    t.integer "bid_amount"
+    t.text "description"
+    t.string "link"
+    t.string "banner"
+    t.integer "type", default: 0
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_campaigns_on_product_id"
+    t.index ["user_id"], name: "index_campaigns_on_user_id"
+  end
+
+  create_table "catalogs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "quanity"
+    t.text "description"
+    t.string "image"
+    t.integer "user_id"
+    t.integer "catalog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["catalog_id"], name: "index_products_on_catalog_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
-    t.string "password_digest"
     t.string "full_name"
     t.string "phone_number"
     t.integer "role"
