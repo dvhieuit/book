@@ -60,32 +60,55 @@ public class BatchConfiguration {
     }
 
     @Bean
+    @StepScope
     public FlatFileItemReader<Customer> reader(){
+<<<<<<< HEAD
         log.info("read file");
         FlatFileItemReader<Customer> reader =new FlatFileItemReader<>();
-        reader.setResource(new ClassPathResource("customer_data.csv"));
+        reader.setResource(new ClassPathResource("customer-data.csv"));
         reader.setLineMapper(new DefaultLineMapper<Customer>(){{
             setLineTokenizer(new DelimitedLineTokenizer(){{
                 setNames(new String[]{ "id", "firstName", "lastName", "email", "phone", "address"});
             }});
             setFieldSetMapper(new BeanWrapperFieldSetMapper<Customer>(){{
                 setTargetType(Customer.class);
+            }});
         }});
-        }});
+=======
+        log.info("reader");
+
+        FlatFileItemReader<Customer> reader = new FlatFileItemReader<>();
+
+        reader.setLinesToSkip(1);
+        reader.setResource(new ClassPathResource("customer_data.csv"));
+
+        DefaultLineMapper<Customer> customerLineMapper = new DefaultLineMapper<>();
+
+        DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+        tokenizer.setNames(new String[]{"id", "firstName", "lastName", "email", "phone", "address"});
+
+        customerLineMapper.setLineTokenizer(tokenizer);
+        customerLineMapper.setFieldSetMapper(new CustomerFieldSetMapper());
+        customerLineMapper.afterPropertiesSet();
+
+        reader.setLineMapper(customerLineMapper);
+>>>>>>> 7c57f21c0dcb1e03aa4020c27ff3c1adc0d06c4f
         return reader;
     }
 
     @Bean
+    @StepScope
     public CustomerItemProcessor processor(){
         return new CustomerItemProcessor();
     }
 
     @Bean
+    @StepScope
     public JdbcBatchItemWriter<Customer> writer(){
         log.info("write into database");
         JdbcBatchItemWriter<Customer> writer = new JdbcBatchItemWriter<>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-        writer.setSql("INSERT INTO customer(id, first_name, last_name,email, phone, address) VALUES (:id, :firstName, :lastName, :email, :phone, :address)");
+        writer.setSql("INSERT INTO customer(id, first_name, last_name, email, phone, address) VALUES (:id, :firstName, :lastName, :email, :phone, :address)");
         writer.setDataSource(dataSource);
         return writer;
     }
