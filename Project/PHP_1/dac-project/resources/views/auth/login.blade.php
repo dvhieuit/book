@@ -45,9 +45,9 @@
                             </div>
 
                         </form>
-                    </article> <!-- card-body end .// -->
+                    </article> card-body end .//
                    <div class="border-top card-body text-center">Don't have an account? <a href="{{ route('register') }}">Sign up</a></div>
-                </div> <!-- card.// -->
+                </div> 
             </div>
         </div>
     </div>

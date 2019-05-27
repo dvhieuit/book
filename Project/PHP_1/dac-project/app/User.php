@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    public $table = 'Users';
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -24,7 +25,6 @@ class User extends Authenticatable
         'phone_number'
     ];
 
-    public $timestamps = false;
     /**
      * The attributes that should be hidden for arrays.
      *

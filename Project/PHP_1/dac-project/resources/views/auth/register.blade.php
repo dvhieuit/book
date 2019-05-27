@@ -88,7 +88,7 @@
                             </div>
 
                         </form>
-                    </article> <!-- card-body end .// -->
+                    </article> <!-- card-body end .//
                     <div class="border-top card-body text-center">Have an account? <a href="{{ route('login') }}">Log In</a></div>
                 </div> <!-- card.// -->
             </div>
