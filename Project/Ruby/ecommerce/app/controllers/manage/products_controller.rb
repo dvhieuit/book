@@ -21,7 +21,7 @@ class Manage::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :catalog_id)
+    params.require(:product).permit(:name, :catalog_id, :image)
   end
 
   def load_catalogs

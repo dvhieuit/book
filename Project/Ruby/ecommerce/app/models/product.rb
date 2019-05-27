@@ -3,11 +3,13 @@ class Product < ApplicationRecord
   belongs_to :catalog
   has_many :campaigns, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 500, minimum: 5 }
-  validates :price, presence: true, length: { minimum: 4 }
-  validates :quantity, presence: true, length: { minimum: 1 }
-  validates :description, presence: true, length: { minimum: 5 }
+  # validates :name, presence: true, length: { maximum: 500, minimum: 5 }
+  # validates :price, presence: true, length: { minimum: 4 }
+  # validates :quantity, presence: true, length: { minimum: 1 }
+  # validates :description, presence: true, length: { minimum: 5 }
   validate :image_size
+
+  mount_uploader :image, ImageUploader
 
   private
 
