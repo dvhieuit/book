@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_162354) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.integer "quanity"
+    t.integer "quantity"
     t.text "description"
     t.string "image"
     t.integer "user_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_162354) do
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "phone_number"
-    t.integer "role"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

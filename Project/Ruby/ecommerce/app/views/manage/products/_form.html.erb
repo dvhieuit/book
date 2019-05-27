@@ -1,0 +1,37 @@
+<%= form_for [:manage, @product], html: {:class => "form-signin form_user"} do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-label-group">
+    <%= f.text_field :name, class: "form-control form-square", placeholder: "Name", "data-error" => "#errname" %>
+    <%= f.label :name %>
+  </div>
+  <div class="form-label-group">
+    <%= f.text_area :description, class: "form-control form-square", placeholder: "Description", "data-error" => "#errname" %>
+    <%= f.label :description %>
+  </div>
+
+  <div class="d-flex">
+    <div class="form-label-group mr-1">
+      <%= f.number_field :price, min: 1000, class: "form-control form-square", placeholder: "Price(vnd)" %>
+      <%= f.label :price, "Price(vnd)" %>
+    </div>
+
+    <div class="form-label-group ml-1">
+        <%= f.number_field :quantity, min: 1, class: "form-control form-square", placeholder: "Quantity" %>
+        <%= f.label :quantity %>
+    </div>
+  </div>
+
+  <%= f.label :catalog %>
+  <div class="form-group">
+    <%= f.select :catalog_id, @catalogs, {selected: @catalogs.first},
+      {class: "form-control form-square pl-3"} %>
+  </div>
+
+  <%= f.label :image %>
+  <span class="picture">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+  <div><%= image_tag @product.image.url(:thumb) if @product.image? %></div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

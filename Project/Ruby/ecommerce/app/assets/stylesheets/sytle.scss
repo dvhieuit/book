@@ -34,7 +34,7 @@
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
-  input {
+  input, textarea {
     height: auto;
     border-radius: 2rem;
     &::-webkit-input-placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-moz-placeholder, &::placeholder {
@@ -52,7 +52,7 @@
     }
   }
   > {
-    input {
+    input, textarea {
       padding: var(--input-padding-y) var(--input-padding-x);
     }
     label {
@@ -73,6 +73,10 @@
   }
 }
 
+.form-square {
+  border-radius: 0 !important;
+}
+
 .btn-google {
   color: white;
   background-color: #ea4335;
@@ -88,4 +92,3 @@
   font-size: 70%;
   color: red;
 }
-
