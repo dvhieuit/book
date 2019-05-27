@@ -1,0 +1,12 @@
+<tr>
+  <th></th>
+  <td><%= product.name %></td>
+  <td><%= number_to_currency(product.price, locale: :vi) %></td>
+  <td><%= product.quantity %></td>
+  <td><%= image_tag(product.image.url(:thumb)) %></td>
+  <td>
+    <%= link_to "Edit", edit_manage_product_path(product) %> - 
+    <%= link_to "Delete", manage_product_path(product), method: :delete,
+      data: { confirm: "You sure!" } %>
+  </td>
+</tr>

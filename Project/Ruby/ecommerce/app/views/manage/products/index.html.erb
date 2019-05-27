@@ -1,0 +1,35 @@
+<div class="p-4">
+  <div class="col-lg-6 m-auto">
+    <%= search_form_for([:manage, @q], html: {class: "row"}) do |f|%>
+      <div class="col-sm-12">
+        <%= f.search_field :name_or_description_cont, class: "form-control",
+          placeholder: "Name or Description" %>
+      </div>
+      <div class="col-sm-6 pt-2">
+        <%= f.search_field :price_gt, class: "form-control", placeholder: "Price greater than" %>
+      </div>
+      <div class="col-sm-6 pt-2">
+        <%= f.search_field :price_lt, class: "form-control", placeholder: "Price less than" %>
+      </div>
+      <div class="col-sm-12 py-2 text-center">
+        <%= f.submit "Search", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</div>

@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :catalog
   has_many :campaigns, dependent: :destroy
 
+  scope :order_by_create, ->{order created_at: :desc}
+
   # validates :name, presence: true, length: { maximum: 500, minimum: 5 }
   # validates :price, presence: true, length: { minimum: 4 }
   # validates :quantity, presence: true, length: { minimum: 1 }
