@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.batch.operations.JobExecutionAlreadyCompleteException;
 
 @Component
 public class JobNoticeCompletionListener extends JobExecutionListenerSupport {
@@ -27,7 +26,7 @@ public class JobNoticeCompletionListener extends JobExecutionListenerSupport {
 
             jdbcTemplate.query("SELECT id, first_name, last_name, email, phone, address FROM customer",
                     (rs, row) -> new Customer(
-                            rs.getInt(1),
+                            rs.getString(1),
                             rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),

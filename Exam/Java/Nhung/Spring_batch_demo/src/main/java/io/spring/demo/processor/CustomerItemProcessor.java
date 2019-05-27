@@ -11,7 +11,7 @@ public class CustomerItemProcessor implements ItemProcessor<Customer, Customer> 
 
     @Override
     public Customer process(Customer customer) throws Exception{
-        Integer id = customer.getId();
+        String id = customer.getId();
         String firstName = customer.getFirstName();
         String lastName = customer.getLastName();
         String email = customer.getEmail();

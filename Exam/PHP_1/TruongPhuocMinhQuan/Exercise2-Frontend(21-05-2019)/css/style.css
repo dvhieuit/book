@@ -1,0 +1,159 @@
+@font-face {
+  font-family: Allura;
+  src: url(../font/Allura-Regular.otf);
+}
+button {
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.wrapper{
+	width: 900px;
+	margin: auto;
+	background-color: white;
+}
+.navigation {
+	text-align: center;
+	background-color: #1F2022;
+}
+.navigation ul {
+	display: inline-block;
+	background-color: #1F2022;
+}
+.navigation li{
+	margin: 10px 20px;
+	float: left;
+	font-family: Times;
+	font-size: 12px;
+	line-height: 18px;
+}
+.navigation li a:hover{
+	text-decoration: underline;
+}
+.navigation li a{
+	text-decoration: none;
+	color: white;
+}
+.banner a{
+	position: relative;
+	display: inline-block;
+}
+.banner h2{
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	font-family: Allura;
+	font-size:100px;
+	color: white;
+}
+.banner img{
+	width: 100%;
+	height: 200px;
+}
+.posts-list{
+	display: flex;
+}
+.posts-list img{
+	width: 300px;
+	height: 200px;
+}
+.posts-list a:hover > p{
+	text-decoration: underline;
+}	
+.posts-list a:hover > img{
+	opacity: 0.7;
+}	
+.posts-list a{
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	text-decoration: none;
+	color: white;
+}
+.posts-list p{
+	position: absolute;
+	bottom: 10px;
+}
+.content {
+	display: flex;
+	padding: 50px 50px; 
+}
+.c-left {
+	flex-grow: 2;
+}
+.c-right {
+	flex-grow: 1;
+}
+.post {
+	text-align: center;
+}
+.post ul{
+	display: inline-block;
+}
+.post li{
+	text-align: center;
+	margin-bottom: 10px;
+}
+#more {display: none;}
+.social{
+	margin-top: 30px;
+	text-align: center;
+}
+.social ul{
+	display: inline-block;
+	margin:auto;
+}
+.social li{
+	float:left;
+	margin-right: 30px;
+}
+.social a{
+  	transition: font-size 0.3s;
+	color:black;
+}
+.social a:hover{
+	font-size: 30px;
+}
+.c-right h3{
+	font-family: Helvetica; 
+	text-align: center;
+}
+.other{
+	margin-bottom: 40px;
+}
+.follow{
+	text-align: center;
+}
+.follow ul{
+	display: inline-block;
+}
+.follow li{
+	margin: 0px 10px;
+	float: left;
+}
+.follow a{
+	color: black;
+	font-size: 25px;
+	float: left;
+}
+.insta img{
+	cursor: pointer;
+	width: 60px;
+	float: left;
+}
+.recent img{
+	float :left;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+.clr{
+	clear: both;
+}
