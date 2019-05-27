@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const urlLogin = 'http://localhost:8080/api/post/list';
+
 class App extends Component {
     state = {
         isLoading: true,
@@ -9,7 +11,7 @@ class App extends Component {
     };
 
     async componentDidMount() {
-        const response = await fetch('/api/post/list');
+        const response = await fetch(urlLogin);
         const body = response.json();
         this.setState({ posts: body, isLoading: false });
     }
