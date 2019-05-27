@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Resend confirmation instructions?</h5>
+
+            <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post , :class => "form-signin"}) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="form-label-group field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                  value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                    class: "form-control", placeholder: "Email" %>
+                <%= f.label :email %><br />
+              </div>
+
+              <div class="actions">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Resend confirmation</button>
+              </div>
+            <% end %>
+            <br />
+            <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
