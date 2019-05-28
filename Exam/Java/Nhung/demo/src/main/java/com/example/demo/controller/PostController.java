@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,7 @@ public class PostController {
     @PostMapping("/post")
     ResponseEntity<Post> createPost(@Valid @RequestBody Post post) throws URISyntaxException {
         Post newPost = postService.savePost(post);
-        return ResponseEntity.created(new URI("/api/post" + newPost.getId())).body(newPost);
+        return ResponseEntity.created(new URL("/api/post" + newPost.getId())).body(newPost);
     }
 
     @PutMapping("/post")
