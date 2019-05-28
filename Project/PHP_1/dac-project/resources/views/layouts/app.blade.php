@@ -210,13 +210,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
-
         <main class="py-4">
             @yield('content')
         </main>
@@ -238,26 +235,27 @@
                 type:'POST',
                 data:formInputs,
                 success: function (data) {
-                    $('.tab-content').html('Register success')
-                    $('#modalForm').modal('toggle')
-                    
+                    $('.modal-content').html('resgiter susscess')
+                    $('#modalForm').on('hidden.bs.modal', function(){
+                        location.reload()
+                    })
                 },
                 error: function (data) {
                     errors = data.responseJSON.errors
                     if(errors.first_name){ 
-                        $('#error-firstname').html(data.responseJSON.errors.first_name[0]);
+                        $('#error-firstname').html(errors.first_name[0]);
                     }
                     if(errors.last_name){
-                        $('#error-lastname').html(data.responseJSON.errors.last_name[0]);
+                        $('#error-lastname').html(errors.last_name[0]);
                     }
                     if(errors.email){
-                        $('#error-email').html(data.responseJSON.errors.email[0]);
+                        $('#error-email').html(errors.email[0]);
                     }
                     if(errors.password){
-                        $('#error-password').html(data.responseJSON.errors.password[0]);
+                        $('#error-password').html(errors.password[0]);
                     }
                     if(errors.phone){
-                        $('#error-phone').html(data.responseJSON.errors.phone[0]);
+                        $('#error-phone').html(errors.phone[0]);
                     }
                 }
             });
@@ -274,21 +272,20 @@
                 type:'POST',
                 data:formInputs,
                 success: function (data) {
-                    console.log(data)
+                    $('#modalForm').modal("hide")
+                    location.reload()
                 },
                 error: function (data) {
-                    // console.log(data.responseJSON.errors);
                     errors = data.responseJSON.errors
                     if(errors.email){
-                        $('#error-emailLogin').html(data.responseJSON.errors.email[0]);
+                        $('#error-emailLogin').html(errors.email[0]);
                     }
                     if(errors.password){
-                        $('#error-passwordLogin').html(data.responseJSON.errors.password[0]);
+                        $('#error-passwordLogin').html(errors.password[0]);
                     }
                     
                 }
-            });
-                
+            });                
         });
     })
 </script>
