@@ -44,14 +44,8 @@
                         @guest
                             <li class="nav-item">
                                 <a href="" class="nav-link" data-toggle="modal"
-                               data-target="#modalForm" onclick="showform('l')">{{ __('Login') }}</a>
+                               data-target="#modalForm" onclick="showform('l')">{{ __('Login/Register') }}</a>
                             </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a href="" class="nav-link" data-toggle="modal"
-                                   data-target="#modalForm" onclick="showform('r')">{{ __('Register') }}</a>
-                            </li>
-                        @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -75,30 +69,6 @@
                 </div>
             </div>
         </nav>
-        <script type="text/javascript">
-            function reset(){
-                $("#panelLogin").removeClass("show");
-                $("#panelLogin").removeClass("active");
-                $("#panelRegister").removeClass("show");
-                $("#panelRegister").removeClass("active");
-                $("#l").removeClass("active");
-                $("#r").removeClass("active");
-            };
-            function showform(id){
-                reset();
-                if(id=='l'){
-                    var log = document.getElementById("panelLogin");
-                    log.classList.add("show");
-                    log.classList.add("active");
-                }
-                else{
-                    var reg = document.getElementById("panelRegister");
-                    reg.classList.add("show");
-                    reg.classList.add("active");
-                }
-                document.getElementById(id).classList.add("active");
-            }
-        </script>
         <div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog cascading-modal" role="document">
@@ -245,6 +215,30 @@
 </body>
 </html>
 <script type="text/javascript">
+    function reset(){
+        $("#panelLogin").removeClass("show");
+        $("#panelLogin").removeClass("active");
+        $("#panelRegister").removeClass("show");
+        $("#panelRegister").removeClass("active");
+        $("#l").removeClass("active");
+        $("#r").removeClass("active");
+    };
+
+    function showform(id){
+        reset();
+        if(id=='l'){
+            var log = document.getElementById("panelLogin");
+            log.classList.add("show");
+            log.classList.add("active");
+        }
+        else{
+            var reg = document.getElementById("panelRegister");
+            reg.classList.add("show");
+            reg.classList.add("active");
+        }
+        document.getElementById(id).classList.add("active");
+    }
+
     $(document).ready(function(){
         $('#formRegister').submit(function(e){
             e.preventDefault()
@@ -306,8 +300,7 @@
                     }
                     if(errors.password){
                         $('#error-passwordLogin').html(errors.password[0]);
-                    }
-                    
+                    }                    
                 }
             });                
         });
