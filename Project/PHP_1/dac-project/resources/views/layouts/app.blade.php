@@ -82,18 +82,18 @@
                 <div class="modal-c-tabs">
                     <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i
+                            <a class="nav-link active" data-toggle="tab" href="#panelRegister" role="tab"><i
                                         class="fas fa-user mr-1"></i>
                                 Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i
+                            <a class="nav-link" data-toggle="tab" href="#panelLogin" role="tab"><i
                                         class="fas fa-user-plus mr-1"></i>
                                 Log In</a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+                        <div class="tab-pane fade in show active" id="panelRegister" role="tabpanel">
                             <div class="card">
                                 <article class="card-body">
                                     <form method="POST" id="formRegister">
@@ -174,7 +174,7 @@
                                 </article>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="panel8" role="tabpanel">
+                        <div class="tab-pane fade" id="panelLogin" role="tabpanel">
                             <div class="card">
                                 <article class="card-body">
                                     <form method="POST" id="formLogin">
@@ -237,8 +237,10 @@
                 url:'/register',
                 type:'POST',
                 data:formInputs,
-                success: function () {
-                    alert('True');
+                success: function (data) {
+                    $('.tab-content').html('Register success')
+                    $('#modalForm').modal('toggle')
+                    
                 },
                 error: function (data) {
                     errors = data.responseJSON.errors
@@ -271,11 +273,11 @@
                 url:'/login',
                 type:'POST',
                 data:formInputs,
-                success: function () {
-                    alert('True');
+                success: function (data) {
+                    console.log(data)
                 },
                 error: function (data) {
-                    console.log(data.responseJSON.errors);
+                    // console.log(data.responseJSON.errors);
                     errors = data.responseJSON.errors
                     if(errors.email){
                         $('#error-emailLogin').html(data.responseJSON.errors.email[0]);
