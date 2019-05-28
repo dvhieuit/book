@@ -44,12 +44,12 @@
                         @guest
                             <li class="nav-item">
                                 <a href="" class="nav-link" data-toggle="modal"
-                               data-target="#modalForm">{{ __('Login') }}</a>
+                               data-target="#modalForm" onclick="showform('l')">{{ __('Login') }}</a>
                             </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
                                 <a href="" class="nav-link" data-toggle="modal"
-                                   data-target="#modalForm">{{ __('Register') }}</a>
+                                   data-target="#modalForm" onclick="showform('r')">{{ __('Register') }}</a>
                             </li>
                         @endif
                         @else
@@ -75,21 +75,45 @@
                 </div>
             </div>
         </nav>
+        <script type="text/javascript">
+            function reset(){
+                $("#panelLogin").removeClass("show");
+                $("#panelLogin").removeClass("active");
+                $("#panelRegister").removeClass("show");
+                $("#panelRegister").removeClass("active");
+                $("#l").removeClass("active");
+                $("#r").removeClass("active");
+            };
+            function showform(id){
+                reset();
+                if(id=='l'){
+                    var log = document.getElementById("panelLogin");
+                    log.classList.add("show");
+                    log.classList.add("active");
+                }
+                else{
+                    var reg = document.getElementById("panelRegister");
+                    reg.classList.add("show");
+                    reg.classList.add("active");
+                }
+                document.getElementById(id).classList.add("active");
+            }
+        </script>
         <div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog cascading-modal" role="document">
             <div class="modal-content">
                 <div class="modal-c-tabs">
-                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                    <ul class="justify-content-center nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#panelRegister" role="tab"><i
-                                        class="fas fa-user mr-1"></i>
-                                Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panelLogin" role="tab"><i
+                            <a id="l" class="nav-link" data-toggle="tab" href="#panelLogin" role="tab"><i
                                         class="fas fa-user-plus mr-1"></i>
                                 Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="r" class="nav-link active" data-toggle="tab" href="#panelRegister" role="tab"><i
+                                        class="fas fa-user mr-1"></i>
+                                Sign Up</a>
                         </li>
                     </ul>
                     <div class="tab-content">
