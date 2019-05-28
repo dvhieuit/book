@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.List;
 
 @RestController
@@ -29,7 +28,7 @@ public class PostController {
         return postService.listPost();
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/post/{postId}")
     ResponseEntity<?> getPost(@PathVariable Long postId) {
         return postService.findById(postId);
     }
@@ -37,7 +36,7 @@ public class PostController {
     @PostMapping("/post")
     ResponseEntity<Post> createPost(@Valid @RequestBody Post post) throws URISyntaxException {
         Post newPost = postService.savePost(post);
-        return ResponseEntity.created(new URL("/api/post" + newPost.getId())).body(newPost);
+        return ResponseEntity.created(new URI("/api/post" + newPost.getId())).body(newPost);
     }
 
     @PutMapping("/post")
@@ -46,7 +45,7 @@ public class PostController {
         return ResponseEntity.ok().body(newPost);
     }
 
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/post/{postId}")
     ResponseEntity deletePost(@PathVariable Long postId) {
         postService.deletePost(postId);
         return ResponseEntity.ok().build();
