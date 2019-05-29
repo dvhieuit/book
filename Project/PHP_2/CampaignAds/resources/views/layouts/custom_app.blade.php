@@ -17,13 +17,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pop-up.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container" >
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
@@ -85,24 +85,24 @@
         </div>
     </nav>
     <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
+         aria-hidden="true" style="min-width: 350px; min-block-size: 350px;writing-mode: horizontal-tb;">
         <div class="modal-dialog cascading-modal" role="document">
             <!--Content-->
             <div class="modal-content">
 
                 <!--Modal cascading tabs-->
-                <div class="modal-c-tabs">
+                <div class="modal-c-tabs full-pop-up">
 
                     <!-- Nav tabs -->
-                    <div class="container">
+                    <div class="container" >
                         <div class="col-md-12 ">
-                            <ul class="nav nav-tabs md-tabs-6 tabs-6 light-blue darken-3 btn-group" role="tablist">
-                                <li class="nav-item float-md-left  " style="width: 50%;">
-                                    <a class="nav-link active  align-content-center align-items-center align-items-center"
+                            <ul class="nav nav-tabs md-tabs-6 tabs-6 light-blue darken-3 btn-group nav-reg-log-padding" role="tablist">
+                                <li class="nav-item float-md-left nav-item-reg-log " >
+                                    <a class="nav-link active show "
                                        data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
                                         Register</a>
                                 </li>
-                                <li class="nav-item float-md-right" style="width: 50%;">
+                                <li class="nav-item float-md-right nav-item-reg-log" >
                                     <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i
                                                 class="fas fa-user-plus mr-1"></i>
                                         Login</a>
@@ -125,42 +125,30 @@
                                 <div class="container register">
                                     <div class="row justify-content-center body-background">
                                         <div class="col-md-12">
-                                            <div class="card card-register">
+                                            <div class="card card-reg-log">
+                                                <h4 class="card-title mt-1 signup-title">Sign Up for Free</h4>
                                                 <div class="card-body">
                                                     <form method="POST" id="formRegister">
                                                         @csrf
-                                                        <h4 class="card-title mt-1 signup-title">Sign up for free</h4>
-                                                        <div class="form-group row">
-
+                                                        <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <div class="col-md-6 float-md-left padding-name">
-                                                                    <input id="firstname" type="text"
-                                                                           placeholder="First name"
-                                                                           class="form-control  @error('firstname') is-invalid @enderror"
-                                                                           name="fname" value="{{ old('firstname') }}"
-                                                                           required autocomplete="firstname" autofocus>
-                                                                    <span class="text-danger">
-                                                                    <strong id="error-fname"></strong>
-                                                                </span>
-                                                                </div>
-                                                                <div class="col-md-6 float-md-right padding-name">
-                                                                    <input id="lastname" type="text"
-                                                                           placeholder="Last name"
-                                                                           class="form-control  @error('lastname') is-invalid @enderror"
-                                                                           name="lname" value="{{ old('lname') }}"
-                                                                           required autocomplete="lastname" autofocus>
-                                                                    <span class="text-danger">
-                                                                    <strong id="error-lname"></strong>
-                                                                </span>
-                                                                </div>
+                                                                <input id="name" type="text"
+                                                                       placeholder="Full name&ast;"
+                                                                       class="form-control @error('name') is-invalid @enderror"
+                                                                       name="name" value="{{ old('name') }}" required
+                                                                       autocomplete="name">
+                                                                <span class="text-danger">
+                                                                <strong id="error-name"></strong>
+                                                            </span>
 
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
+
+                                                        <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="register_email" type="email"
-                                                                       placeholder="Name@example.com"
+                                                                       placeholder="Name@example.com&ast;"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
                                                                        autocomplete="email">
@@ -171,10 +159,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
+                                                        <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="password-register" type="password"
-                                                                       placeholder="Type your password"
+                                                                       placeholder="Type your password&ast;"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
                                                                        autocomplete="new-password">
@@ -184,35 +172,26 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
+                                                        <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="password-confirm" type="password"
-                                                                       placeholder="Retype your password"
+                                                                       placeholder="Retype your password&ast;"
                                                                        class="form-control" name="password_confirmation"
                                                                        required autocomplete="new-password">
 
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
 
+                                                        <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="phone" type="text" placeholder="Phone number"
-                                                                       class="form-control @error('phone') is-invalid @enderror"
-                                                                       name="phone" value="{{ old('[phone') }}" required
-                                                                       autocomplete="phone" autofocus>
-                                                                <span class="text-danger">
-                                                                <strong id="error-phone"></strong>
-                                                            </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-body col-12 btn-margin">
-                                                            <div class="col-12 justify-content-center">
                                                                 <button type="submit" id="SubmitRegisterForm"
                                                                         class="btn btn-primary btn-get-started col-12 justify-content-center">
                                                                     {{ __('GET STARTED') }}
                                                                 </button>
+
                                                             </div>
                                                         </div>
+
 
                                                     </form>
                                                 </div>
@@ -236,23 +215,23 @@
                                 {{--                                Start Login Form                --}}
                                 {{--                                                                --}}
                                 {{--                                                                --}}
-                                <div class="container">
+                                <div class="container" >
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-header">{{ __('Login') }}</div>
+                                            <div class="card card-reg-log">
+                                                <h4 class="card-title mt-1 signup-title">Login to Your Account</h4>
+{{--                                                <div class="card-header"></div>--}}
 
                                                 <div class="card-body">
                                                     <form method="POST"  id="formLogin">
                                                         @csrf
                                                         <spans class="text-center text-danger" id="active-error-login"></spans>
                                                         <spans class="text-center text-danger" id="failure-error-login"></spans>
-                                                        <div class="form-group row">
-                                                            {{--                                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
+                                                        <div class="form-group row form-row-input">
 
                                                             <div class="col-md-12">
                                                                 <input id="email" type="email"
-                                                                       placeholder="Type your Email"
+                                                                       placeholder="Type your Email&ast;"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
                                                                        autocomplete="email" autofocus>
@@ -260,20 +239,16 @@
                                                                 <span class="text-danger">
                                                                     <strong id="email-error-login"></strong>
                                                                 </span>
-                                                                {{--                                                                @error('email')--}}
-                                                                {{--                                                                <span class="invalid-feedback" role="alert">--}}
-                                                                {{--                                        <strong>{{ $message }}</strong>--}}
-                                                                {{--                                    </span>--}}
-                                                                {{--                                                                @enderror--}}
+
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
+                                                        <div class="form-group row form-row-input">
                                                             {{--                                                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
 
                                                             <div class="col-md-12">
                                                                 <input id="password" type="password"
-                                                                       placeholder="Type Your Password"
+                                                                       placeholder="Type Your Password&ast;"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
                                                                        autocomplete="current-password">
@@ -285,37 +260,19 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <div class="col-md-6 offset-md-4">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                           name="remember"
-                                                                           id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                                                    <label class="form-check-label" for="remember">
-                                                                        {{ __('Remember Me') }}
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row mb-0">
-                                                            <div class="col-md-8 offset-md-4">
-                                                                <button type="button" class="btn btn-primary" id="submitLoginForm">
-                                                                   Login
+                                                        <div class="form-group row form-row-input">
+                                                            <div class="col-md-12">
+                                                                <button type="button" class="btn btn-primary btn-get-started col-12 justify-content-center"
+                                                                        id="submitLoginForm">
+                                                                    {{ __('LOGIN') }}
                                                                 </button>
 
-                                                                @if (Route::has('password.request'))
-                                                                    <a class="btn btn-link"
-                                                                       href="{{ route('password.request') }}">
-                                                                        {{ __('Forgot Your Password?') }}
-                                                                    </a>
-                                                                @endif
                                                             </div>
                                                         </div>
+
                                                     </form>
                                                 </div>
-                                            </div>
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -337,8 +294,9 @@
     $(document).ready(function () {
         $('#formRegister').submit(function (e) {
             e.preventDefault()
-            $('#error-fname').html('')
-            $('#error-lname').html('')
+            // $('#error-fname').html('')
+            // $('#error-lname').html('')
+            $('#error-name').html('')
             $('#error-email').html('')
             $('#error-password').html('')
             $('#error-phone').html('')
@@ -350,11 +308,11 @@
                 success: function (data) {
                     console.log(data);
                     if (data.errors) {
-                        if (data.errors.firstname) {
-                            $('#error-fname').html(data.errors.fname[0]);
-                        }
-                        if (data.errors.lastname) {
-                            $('#error-lname').html(data.errors.lname[0]);
+                        // if (data.errors.firstname) {
+                        //     $('#error-fname').html(data.errors.fname[0]);
+                        // }
+                        if (data.errors.name) {
+                            $('#error-name').html(data.errors.name[0]);
                         }
                         if (data.errors.email) {
                             $('#error-email').html(data.errors.email[0]);
@@ -373,7 +331,7 @@
                             $('#SignUp').modal('hide');
                             //$('#success-msg').addClass('hide');
                         }, 2000);
-                        window.location.href = "http://campaignads.local/home";
+                        window.location.href = "../home";
                     }
                 },
                 /*error: function (data) {
@@ -439,10 +397,15 @@
                         $('#LogIn').modal('hide');
                         $('#success-msg').addClass('hide');
                     }, 1000);
-                    window.location.href = "http://campaignads.local/home";
+                    window.location.href = "../home";
                 }
             },
         });
+    });
+</script>
+<script>
+    $('#register_email').each(function () {
+        $(this).html($(this).html().replace(/(\*)/g, '<span style="color: green;">*</span>'));
     });
 </script>
 </body>
