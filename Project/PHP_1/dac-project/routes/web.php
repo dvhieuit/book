@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', 'Auth\RegisterController@activateEmail');
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/activate', 'Auth\RegisterController@updateStatus');
 
 Auth::routes();

@@ -265,10 +265,6 @@
                         title: 'Successful',
                         text: data.message,
                         type: 'success',
-                    }).then((result) => {
-                        if (result.value) {
-                            location.reload()
-                        }
                     })
                 },
                 error: function (data) {
