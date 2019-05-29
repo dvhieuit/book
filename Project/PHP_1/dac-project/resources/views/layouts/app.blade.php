@@ -198,7 +198,6 @@
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">GET STARTED</button>
                                         </div>
-
                                     </form>
                                 </article>
                             </div>
@@ -253,7 +252,8 @@
                 type:'POST',
                 data:formInputs,
                 success: function (data) {
-                    $('.modal-content').html('resgiter susscess')
+                    console.log(data)
+                    $('.modal-content').html(data.message)
                     $('#modalForm').on('hidden.bs.modal', function(){
                         location.reload()
                     })
@@ -290,8 +290,13 @@
                 type:'POST',
                 data:formInputs,
                 success: function (data) {
-                    $('#modalForm').modal("hide")
-                    location.reload()
+                    console.log(data)
+                    if(data.message){
+                       console.log('abc')
+                    }else{
+                        $('#modalForm').modal("hide")
+                        location.reload()
+                    }
                 },
                 error: function (data) {
                     errors = data.responseJSON.errors

@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('fullname');
             $table->integer('role_id');
-            $table->string('phone_number');
+            $table->string('phone_number')->nullable();
+            $table->integer('active');
+            $table->string('token_active_mail')->nullable();
             $table->rememberToken();
         });
     }

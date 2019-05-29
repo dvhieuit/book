@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use App\Mail\activateEmail;
 
 class RegisterController extends Controller
 {
@@ -51,6 +54,27 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $fullname = $request->first_name . ' ' . $request->last_name;
+
+        $this->activateEmail($request->email, $fullname);
+
+        return response([
+            'message' => 'Please check your email to activate your account.'
+        ], 200);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param array $data
@@ -85,6 +109,56 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role_id' => 2,
             'phone_number' => $data['phone'],
+            'active' => 0
         ]);
     }
+
+    /**
+     * Send mail after register successful
+     *
+     * @param $email
+     * @return \App\Mail
+     */
+    protected function activateEmail($email, $fullname)
+    {
+        $token_active_mail = $this->generateUniqueAccessToken();
+
+        User::where('email', $email)->update([
+            'token_active_mail' => $token_active_mail,
+        ]);
+
+        $data = [
+            'fullname' => $fullname,
+            'token_active_mail' => $token_active_mail
+        ];
+
+        return \Mail::to($email)->send(new activateEmail($data));
+
+    }
+
+    /**
+     * create random token active mail
+     *
+     * @param
+     * @return $token_active_mail
+     */
+    protected function generateUniqueAccessToken()
+    {
+        do {
+            $token_active_mail = str_random(64);
+        } while ($user = User::where('token_active_mail', $token_active_mail)->first());
+
+        return $token_active_mail;
+    }
+
+    protected function updateStatus(Request $request){
+        $check = User::where('token_active_mail', $request->token_active_mail)->update([
+            'active' => 1
+        ]);
+
+        if($check){
+            return redirect('/');
+        }
+    }
+
 }

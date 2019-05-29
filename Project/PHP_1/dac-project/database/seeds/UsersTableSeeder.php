@@ -24,7 +24,8 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt($password),
                 'fullname' => 'thong quan',
                 'role_id' => 1,
-                'phone_number' => '0901971498'
+                'phone_number' => '0901971498',
+                'active' => 1
             ]
         );
 
@@ -35,7 +36,8 @@ class UsersTableSeeder extends Seeder
                     'password' => bcrypt($password),
                     'fullname' => $faker->name,
                     'role_id' => 2,
-                    'phone_number' => $faker->phoneNumber
+                    'phone_number' => $faker->phoneNumber,
+                    'active' => 0
                 ]
             );
         }
