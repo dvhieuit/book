@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('img/logo.png') }}" class="logo img-fluid" alt="Responsive image">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -44,9 +44,10 @@
                         @guest
                             <li class="nav-item">
                                 <a href="" class="nav-link" data-toggle="modal"
-                               data-target="#modalForm" onclick="showform('l')">{{ __('Login/Register') }}</a>
+                               data-target="#modalForm" >{{ __('Login/Sign up') }}</a>
                             </li>
                         @else
+                            <li class="nav-item dropdown"><img src="{{ asset('img/avatar.png') }}" class="avatar" alt="Responsive image"></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->fullname }} <span class="caret"></span>
@@ -63,7 +64,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -76,18 +77,19 @@
                 <div class="modal-c-tabs">
                     <ul class="justify-content-center nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
                         <li class="nav-item">
-                            <a id="l" class="nav-link" data-toggle="tab" href="#panelLogin" role="tab"><i
-                                        class="fas fa-user-plus mr-1"></i>
+                            <a class="nav-link active" data-toggle="tab" href="#panelLogin" role="tab">
+                                <i class="fas fa-user-plus mr-1"></i>
                                 Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a id="r" class="nav-link active" data-toggle="tab" href="#panelRegister" role="tab"><i
+                            <a class="nav-link" data-toggle="tab" href="#panelRegister" role="tab"><i
                                         class="fas fa-user mr-1"></i>
                                 Sign Up</a>
                         </li>
                     </ul>
+                    
                     <div class="tab-content">
-                        <div class="tab-pane fade in show active" id="panelRegister" role="tabpanel">
+                        <div class="tab-pane fade" id="panelRegister" role="tabpanel">
                             <div class="card">
                                 <article class="card-body">
                                     <form method="POST" id="formRegister">
@@ -97,24 +99,25 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group">
-                                                <label>First name </label>
+                                                <!-- <label>First name </label> -->
                                                 <input id="first_name" type="text"
                                                        class="form-control"
                                                        name="first_name"
                                                        value="{{ old('first_name') }}" required
-                                                       autocomplete="first_name" autofocus>
+                                                       autocomplete="first_name" autofocus placeholder="First Name">
 
                                                 <span class="text-danger">
                                                     <strong id="error-firstname"></strong>
                                                 </span>
                                             </div>
                                             <div class="col form-group">
-                                                <label>Last name</label>
+                                                <!-- <label>Last name</label> -->
                                                 <input id="last_name" type="text"
                                                        class="form-control"
                                                        name="last_name"
                                                        value="{{ old('last_name') }}" required autocomplete="last_name"
-                                                       autofocus>
+                                                       autofocus placeholder="Last Name">
+
 
                                                 <span class="text-danger">
                                                     <strong id="error-lastname"></strong>
@@ -122,83 +125,95 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Email address</label>
+                                            <!-- <label>Email address</label> -->
                                             <input id="email" type="email"
                                                    class="form-control"
                                                    name="email"
-                                                   value="{{ old('email') }}" required autocomplete="email">
+                                                   value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
 
                                             <span class="text-danger">
                                                 <strong id="error-email"></strong>
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <label>Create password</label>
+                                            <!-- <label>Set a password</label> -->
                                             <input id="password" type="password"
                                                    class="form-control"
                                                    name="password"
-                                                   required autocomplete="new-password">
+                                                   required autocomplete="new-password" placeholder="Set a password">
 
                                             <span class="text-danger">
                                                 <strong id="error-password"></strong>
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <label>Confirm password</label>
+                                            <!-- <label>Confirm password</label> -->
 
                                             <input id="password-confirm" type="password" class="form-control"
-                                                   name="password_confirmation" required autocomplete="new-password">
+                                                   name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                         </div>
                                         <div class="form-group">
-                                            <label>Phone</label>
+                                            <!-- <label>Phone</label> -->
                                             <input id="phone" type="text"
                                                    class="form-control"
                                                    name="phone"
                                                    required value="{{ old('phone') }}"
-                                                   autocomplete="phone">
+                                                   autocomplete="phone" placeholder="Phone Number">
                                             <span class="text-danger">
                                                 <strong id="error-phone"></strong>
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block" id="submitFormSignUp">GET STARTED</button>
+                                            <button type="submit" class="btn btn-primary btn-block custom-btn" id="submitFormSignUp">GET STARTED</button>
                                         </div>
 
                                     </form>
                                 </article>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="panelLogin" role="tabpanel">
+                        <div class="tab-pane fade in show active" id="panelLogin" role="tabpanel">
                             <div class="card">
                                 <article class="card-body">
                                     <form method="POST" id="formLogin">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Email address</label>
+                                            <!-- <label>Email address</label> -->
+                                            <!-- <span class="second-letter">*</span> -->
                                             <input id="emailLogin" type="email"
                                                    class="form-control"
                                                    name="email"
-                                                   value="{{ old('email') }}" required autocomplete="email">
+                                                   value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                                             <span class="text-danger">
                                                 <strong id="error-emailLogin"></strong>
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <label>Password</label>
+                                            <!-- <label>Password</label> -->
+                                            <!-- <span class="second-letter">*</span> -->
                                             <input id="passwordLogin" type="password"
                                                    class="form-control"
                                                    name="password"
-                                                   required autocomplete="new-password">
+                                                   required autocomplete="new-password" placeholder="Password">
 
                                             <span class="text-danger">
                                                 <strong id="error-passwordLogin"></strong>
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">GET STARTED</button>
-                                        </div>
+                                            <div class="col-md-6 offset-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
+                                                    <label class="form-check-label" for="remember">
+                                                        {{ __('Remember Me') }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block custom-btn">LOGIN</button>
+                                        </div>
                                     </form>
                                 </article>
                             </div>
@@ -215,30 +230,6 @@
 </body>
 </html>
 <script type="text/javascript">
-    function reset(){
-        $("#panelLogin").removeClass("show");
-        $("#panelLogin").removeClass("active");
-        $("#panelRegister").removeClass("show");
-        $("#panelRegister").removeClass("active");
-        $("#l").removeClass("active");
-        $("#r").removeClass("active");
-    };
-
-    function showform(id){
-        reset();
-        if(id=='l'){
-            var log = document.getElementById("panelLogin");
-            log.classList.add("show");
-            log.classList.add("active");
-        }
-        else{
-            var reg = document.getElementById("panelRegister");
-            reg.classList.add("show");
-            reg.classList.add("active");
-        }
-        document.getElementById(id).classList.add("active");
-    }
-
     $(document).ready(function(){
         $('#formRegister').submit(function(e){
             e.preventDefault()
@@ -253,7 +244,7 @@
                 type:'POST',
                 data:formInputs,
                 success: function (data) {
-                    $('.modal-content').html('resgiter susscess')
+                    $('.modal-content').html("<div class='modal-header'><h5 class='modal-title' id='exampleModalLabel'>Register Success</h5></div>");
                     $('#modalForm').on('hidden.bs.modal', function(){
                         location.reload()
                     })
@@ -277,7 +268,6 @@
                     }
                 }
             });
-                
         });
 
         $('#formLogin').submit(function(e){
