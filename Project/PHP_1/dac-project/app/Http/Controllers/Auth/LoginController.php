@@ -74,18 +74,19 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        $check = User::where([
-            'email' => $request->email,
-            'active' => 1
-        ])->first();
-        if(!$check){
-            return response([
-                'message' => 'Please check your email to activate your account.'
-            ], 200);
-        }
 
         if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
+            $check = User::where([
+                'email' => $request->email,
+                'active' => 1,
+            ])->first();
+            if ($check) {
+                return $this->sendLoginResponse($request);
+            } else {
+                return response([
+                    'message' => 'Please check your email to activate your account.'
+                ], 200);
+            }
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts

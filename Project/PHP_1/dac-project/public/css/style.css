@@ -1,3 +1,46 @@
 .heading-title {
     text-align: center;
 }
+.logo {
+	width: 200px;
+	height: 100px;
+}
+.avatar{
+	width:30px;
+	height:30px;
+}
+.tab-content{
+	background-color: #25313E;
+}
+.form-control{
+	border-radius: 0;
+}
+.tab-content div,.nav-tabs {
+	background-color: #25313E;
+	border: none;
+}
+.nav-tabs{
+	padding-top: 20px;
+}
+.nav-tabs .nav-item{
+	text-align: center;
+	width: 40%;
+}
+.tab-content label,h2 {
+	color: white;
+}
+.modal a{
+	border: none !important;
+	border-radius: 0 !important;
+	color: white !important;
+	background-color: #686868;
+}
+.modal .active{
+	border: none;
+	background-color: #044256 !important;
+}
+.custom-btn {
+	border:none;
+	border-radius: 0;
+	background-color: #044256;
+}
