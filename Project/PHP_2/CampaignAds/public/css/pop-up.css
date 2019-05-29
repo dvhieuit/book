@@ -4,6 +4,8 @@
 .nav-reg-log-padding{
     padding-top: 5%;
     border: none;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-size: 20px;
 }
 .nav-reg-log-padding li a{
     background-color: #686868;
@@ -27,6 +29,7 @@
 }
 .nav-tabs .nav-link{
     border: none;
+    border-radius: unset;
 }
 
 .nav-item-reg-log{
@@ -34,6 +37,8 @@
     text-align: center;
     border: none;
     color: white;
+    letter-spacing: 0.08em;
+
 }
 .card-reg-log{
     background-color: #25313e;
@@ -42,18 +47,19 @@
 }
 .card-reg-log h4{
     margin: 0 auto;
-    font-family: "Times New Roman";
+    font-family: Arial;
     font-size: 30px;
+    text-align: center;
+    color: #c9c6b6;
 }
 .form-row-input input{
     background: transparent;
     border-radius: unset;
-    /*border: none;*/
 }
-[placeholder]:focus::-webkit-input-placeholder {
-    color: transparent;
-    background-color: transparent;
-}
+/*[placeholder]:focus::-webkit-input-placeholder {*/
+/*    color: transparent;*/
+/*    background-color: transparent;*/
+/*}*/
 
 .btn-get-started{
     font-size: 27px;
@@ -66,10 +72,9 @@ nav-item-reg-log tab:focus, tab:active{
     background-color: #044256;
 }
 
-
-[placeholder]:after::-webkit-input-placeholder {
-    color:red;
-    content: "*";
+/* '*'green ma ko duoc*/
+[placeholder]:active::-webkit-input-placeholder {
+    border: none;
 }
 
 [placeholder]:after::-moz-placeholder {
@@ -81,12 +86,27 @@ nav-item-reg-log tab:focus, tab:active{
     color:red;
     content: "*";
 }
-/*
-[placeholder]:after::-webkit-input-placeholder {
-    color: green;
-    content: "*";
-}
-input::-webkit-input-placeholder:after{color:red;content:" *";}*/
+
 ::-webkit-input-placeholder {
     color: blue;
+}
+
+/*Xoa vien xanh tren the input khi click vao*/
+.form-control:focus  {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-primary{
+    border-radius: unset;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none!important;
+}
+
+/*doi border form giong voi placeholder*/
+.form-control{
+    border: 1px solid #495057;
 }

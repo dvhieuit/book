@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pop-up.css') }}" rel="stylesheet">
@@ -32,13 +28,10 @@
                     aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -47,14 +40,12 @@
                             <a class="nav-link" data-toggle="modal" data-target="#modalLRForm"
                                href="">Login/Register</a>
                         </li>
-
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->full_name }} <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="">
                                     Thông tin cá nhân
@@ -67,7 +58,6 @@
                                         Quản lý người dùng
                                     </a>
                                 @endif
-
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,10 +79,8 @@
         <div class="modal-dialog cascading-modal" role="document">
             <!--Content-->
             <div class="modal-content">
-
                 <!--Modal cascading tabs-->
                 <div class="modal-c-tabs full-pop-up">
-
                     <!-- Nav tabs -->
                     <div class="container" >
                         <div class="col-md-12 ">
@@ -108,19 +96,14 @@
                                         Login</a>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
-
-
                     <!-- Tab panels -->
                     <div class="tab-content">
                         <!--Panel 7-->
                         <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
                             <!--Body-->
                             <div class="modal-body mb-1">
-
                                 {{--                                Start register form         --}}
                                 <div class="container register">
                                     <div class="row justify-content-center body-background">
@@ -133,18 +116,15 @@
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="name" type="text"
-                                                                       placeholder="Full name&ast;"
+                                                                       placeholder="Fullname&ast;"
                                                                        class="form-control @error('name') is-invalid @enderror"
                                                                        name="name" value="{{ old('name') }}" required
-                                                                       autocomplete="name">
+                                                                       autocomplete="name" >
                                                                 <span class="text-danger">
                                                                 <strong id="error-name"></strong>
                                                             </span>
-
                                                             </div>
                                                         </div>
-
-
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="register_email" type="email"
@@ -155,10 +135,8 @@
                                                                 <span class="text-danger">
                                                                 <strong id="error-email"></strong>
                                                             </span>
-
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="password-register" type="password"
@@ -171,88 +149,66 @@
                                                             </span>
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="password-confirm" type="password"
                                                                        placeholder="Retype your password&ast;"
                                                                        class="form-control" name="password_confirmation"
                                                                        required autocomplete="new-password">
-
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <button type="submit" id="SubmitRegisterForm"
                                                                         class="btn btn-primary btn-get-started col-12 justify-content-center">
                                                                     {{ __('GET STARTED') }}
                                                                 </button>
-
                                                             </div>
                                                         </div>
-
-
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
                         <!--/.Panel 7-->
-
                         <!--Panel 8-->
                         <div class="tab-pane fade" id="panel8" role="tabpanel">
-
                             <!--Body-->
                             <div class="modal-body">
-
                                 {{--                                Start Login Form                --}}
-                                {{--                                                                --}}
-                                {{--                                                                --}}
                                 <div class="container" >
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="card card-reg-log">
                                                 <h4 class="card-title mt-1 signup-title">Login to Your Account</h4>
 {{--                                                <div class="card-header"></div>--}}
-
                                                 <div class="card-body">
                                                     <form method="POST"  id="formLogin">
                                                         @csrf
                                                         <spans class="text-center text-danger" id="active-error-login"></spans>
                                                         <spans class="text-center text-danger" id="failure-error-login"></spans>
                                                         <div class="form-group row form-row-input">
-
                                                             <div class="col-md-12">
                                                                 <input id="email" type="email"
                                                                        placeholder="Type your Email&ast;"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
                                                                        autocomplete="email" autofocus>
-
                                                                 <span class="text-danger">
                                                                     <strong id="email-error-login"></strong>
                                                                 </span>
-
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row form-row-input">
-                                                            {{--                                                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
-
                                                             <div class="col-md-12">
                                                                 <input id="password" type="password"
                                                                        placeholder="Type Your Password&ast;"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
                                                                        autocomplete="current-password">
-
                                                                 <span class="text-danger">
                                                                     <strong id="password-error-login"></strong>
                                                                 </span>
@@ -266,10 +222,8 @@
                                                                         id="submitLoginForm">
                                                                     {{ __('LOGIN') }}
                                                                 </button>
-
                                                             </div>
                                                         </div>
-
                                                     </form>
                                                 </div>
 {{--                                            </div>--}}
@@ -277,12 +231,10 @@
                                     </div>
                                 </div>
                                 {{--                                End Log in form             --}}
-
                             </div>
                         </div>
                         <!--/.Panel 8-->
                     </div>
-
                 </div>
             </div>
             <!--/.Content-->
@@ -300,6 +252,7 @@
             $('#error-email').html('')
             $('#error-password').html('')
             $('#error-phone').html('')
+
             var formInputs = $('#formRegister').serialize();
             $.ajax({
                 url: '/register',
@@ -323,7 +276,6 @@
                         if (data.errors.phone) {
                             $('#error-phone').html(data.errors.phone[0]);
                         }
-
                     }
                     if (data.success) {
                         //$('#success-msg').removeClass('hide');
@@ -334,24 +286,6 @@
                         window.location.href = "../home";
                     }
                 },
-                /*error: function (data) {
-                    console.log(data)
-                    if (errors.firstname) {
-                        $('#error-fname').html(errors.firstname[0]);
-                    }
-                    if (errors.lastname) {
-                        $('#error-lname').html(errors.lastname[0]);
-                    }
-                    if (errors.email) {
-                        $('#error-email').html(errors.email[0]);
-                    }
-                    if (errors.password) {
-                        $('#error-password').html(errors.password[0]);
-                    }
-                    if (errors.phone) {
-                        $('#error-phone').html(errors.phone[0]);
-                    }
-                }*/
             });
         });
     });
