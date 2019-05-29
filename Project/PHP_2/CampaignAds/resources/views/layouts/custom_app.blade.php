@@ -18,7 +18,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="{{ asset('js/validate_register.js') }}"></script>
+
+
 </head>
 <body>
 <div id="app">
@@ -127,28 +132,28 @@
                                         <div class="col-md-12">
                                             <div class="card card-register">
                                                 <div class="card-body">
-                                                    <form method="POST" id="formRegister">
+                                                    <form method="POST" id="formRegister" name="registration">
                                                         @csrf
                                                         <h4 class="card-title mt-1 signup-title">Sign up for free</h4>
                                                         <div class="form-group row">
 
                                                             <div class="col-md-12">
                                                                 <div class="col-md-6 float-md-left padding-name">
-                                                                    <input id="firstname" type="text"
+                                                                    <input id="firstname" type="text" maxlength="122" required
                                                                            placeholder="First name"
-                                                                           class="form-control  @error('firstname') is-invalid @enderror"
+                                                                           class="form-control  @error('fname') is-invalid @enderror"
                                                                            name="fname" value="{{ old('firstname') }}"
-                                                                           required autocomplete="firstname" autofocus>
+                                                                           autocomplete="firstname" autofocus>
                                                                     <span class="text-danger">
                                                                     <strong id="error-fname"></strong>
                                                                 </span>
                                                                 </div>
                                                                 <div class="col-md-6 float-md-right padding-name">
-                                                                    <input id="lastname" type="text"
+                                                                    <input id="lastname" type="text" maxlength="122" required
                                                                            placeholder="Last name"
-                                                                           class="form-control  @error('lastname') is-invalid @enderror"
+                                                                           class="form-control  @error('lname') is-invalid @enderror"
                                                                            name="lname" value="{{ old('lname') }}"
-                                                                           required autocomplete="lastname" autofocus>
+                                                                           autocomplete="lastname" autofocus>
                                                                     <span class="text-danger">
                                                                     <strong id="error-lname"></strong>
                                                                 </span>
@@ -159,7 +164,7 @@
 
                                                         <div class="form-group row">
                                                             <div class="col-md-12">
-                                                                <input id="register_email" type="email"
+                                                                <input id="register_email" type="email" maxlength="255"
                                                                        placeholder="Name@example.com"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
@@ -173,7 +178,7 @@
 
                                                         <div class="form-group row">
                                                             <div class="col-md-12">
-                                                                <input id="password-register" type="password"
+                                                                <input id="password-register" type="password" minlength="6"
                                                                        placeholder="Type your password"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
@@ -186,7 +191,7 @@
 
                                                         <div class="form-group row">
                                                             <div class="col-md-12">
-                                                                <input id="password-confirm" type="password"
+                                                                <input id="password-confirm" type="password" minlength="6"
                                                                        placeholder="Retype your password"
                                                                        class="form-control" name="password_confirmation"
                                                                        required autocomplete="new-password">
@@ -196,7 +201,8 @@
                                                         <div class="form-group row">
 
                                                             <div class="col-md-12">
-                                                                <input id="phone" type="text" placeholder="Phone number"
+                                                                <input id="phone" type="tel" placeholder="Phone number"
+                                                                       pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                                                                        class="form-control @error('phone') is-invalid @enderror"
                                                                        name="phone" value="{{ old('[phone') }}" required
                                                                        autocomplete="phone" autofocus>
@@ -243,7 +249,7 @@
                                                 <div class="card-header">{{ __('Login') }}</div>
 
                                                 <div class="card-body">
-                                                    <form method="POST"  id="formLogin">
+                                                    <form method="POST" action="/login" id="formLogin">
                                                         @csrf
                                                         <spans class="text-center text-danger" id="active-error-login"></spans>
                                                         <spans class="text-center text-danger" id="failure-error-login"></spans>
@@ -251,7 +257,7 @@
                                                             {{--                                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
 
                                                             <div class="col-md-12">
-                                                                <input id="email" type="email"
+                                                                <input id="email" type="email" maxlength="255"
                                                                        placeholder="Type your Email"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
@@ -272,7 +278,7 @@
                                                             {{--                                                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
 
                                                             <div class="col-md-12">
-                                                                <input id="password" type="password"
+                                                                <input id="password" type="password" minlength="6"
                                                                        placeholder="Type Your Password"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
@@ -301,7 +307,7 @@
 
                                                         <div class="form-group row mb-0">
                                                             <div class="col-md-8 offset-md-4">
-                                                                <button type="button" class="btn btn-primary" id="submitLoginForm">
+                                                                <button type="submit" class="btn btn-primary" id="submitLoginForm">
                                                                    Login
                                                                 </button>
 
@@ -334,8 +340,22 @@
 </div>
 
 <script type="text/javascript">
+    function validateRegister() {
+        var password = document.getElementById("password-register").value;
+        var confirmPassword = document.getElementById("password-confirm").value;
+        if (password != confirmPassword) {
+            $('#error-password').html('password miss match');
+            return false;
+        }
+        return true;
+    }
     $(document).ready(function () {
+
         $('#formRegister').submit(function (e) {
+            if(!validateRegister()){
+                e.preventDefault();
+                return false;
+            }
             e.preventDefault()
             $('#error-fname').html('')
             $('#error-lname').html('')
@@ -399,51 +419,56 @@
     });
 </script>
 
-<script type="text/javascript">
-    $('body').on('click', '#submitLoginForm', function () {
-        var loginForm = $("#formLogin");
-        var formData = loginForm.serialize();
-        $('#email-error-login').html("");
-        $('#password-error-login').html("");
-        $('#active-error-login').html("");
-        $('#failure-error-login').html("");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: '/login',
-            type: 'POST',
-            data: formData,
-            success: function (data) {
-                console.log(data);
-                if (data.errors) {
-                    if(data.errors.active){
-                        $('#active-error-login').html(data.errors.active);
-                    }
-                    if(data.errors.failure){
-                        $('#failure-error-login').html(data.errors.failure);
-                    }
-                    if (data.errors.email) {
-                        $('#email-error-login').html(data.errors.email[0]);
-                    }
-                    if (data.errors.password) {
-                        $('#password-error-login').html(data.errors.password[0]);
-                    }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#formLogin').submit(function (e) {
+            e.preventDefault();
+            var loginForm = $("#formLogin");
+            var formData = loginForm.serialize();
+            $('#email-error-login').html("");
+            $('#password-error-login').html("");
+            $('#active-error-login').html("");
+            $('#failure-error-login').html("");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-                if (data.success) {
-                    $('#success-msg').removeClass('hide');
-                    setInterval(function () {
-                        $('#LogIn').modal('hide');
-                        $('#success-msg').addClass('hide');
-                    }, 1000);
-                    window.location.href = "http://campaignads.local/home";
-                }
-            },
+            });
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.active) {
+                            $('#active-error-login').html(data.errors.active);
+                        }
+                        if (data.errors.failure) {
+                            $('#failure-error-login').html(data.errors.failure);
+                        }
+                        if (data.errors.email) {
+                            $('#email-error-login').html(data.errors.email[0]);
+                        }
+                        if (data.errors.password) {
+                            $('#password-error-login').html(data.errors.password[0]);
+                        }
+
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hide');
+                        setInterval(function () {
+                            $('#LogIn').modal('hide');
+                            $('#success-msg').addClass('hide');
+                        }, 1000);
+                        window.location.href = "http://campaignads.local/home";
+                    }
+                },
+            });
         });
     });
 </script>
+
 </body>
 </html>
