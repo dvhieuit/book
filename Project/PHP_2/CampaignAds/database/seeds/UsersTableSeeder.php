@@ -21,10 +21,10 @@ class UsersTableSeeder extends Seeder
             DB::table('Users')->insert([
                 'full_name' =>$faker->name,
                 'email' => $faker->email,
-                'pass' => bcrypt('secret'),
+                'password' => bcrypt('secret'),
                 'phone_number' => $faker->phoneNumber,
                 'role_id' => $i%2,
-                'remember_token' => Str::random(100),
+                'active'=> rand(0,1),
             ]);
         }
     }

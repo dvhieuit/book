@@ -1,0 +1,71 @@
+.body {
+    min-width: 350px;
+}
+
+.register {
+    color: white;
+    min-width: 350px;
+}
+
+.body-background {
+    background-color: #25313e;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.card-register {
+    background-color: #25313e !important;
+}
+
+.btn-primary {
+    /*background-color: #227dc7;*/
+}
+
+.btn-margin {
+    margin: auto;
+    padding: auto;
+}
+
+.btn {
+    border: none;
+}
+
+.btn-color {
+    background-color: #1999b5;
+    background-color: #044256;
+    border: none;
+    color: white;
+}
+
+.btn-color-2 {
+    background-color: #686868;
+    border: none;
+}
+
+.btn-get-started {
+    background-color: #044256;
+}
+
+.signup-title {
+    text-align: center;
+}
+
+.card-header {
+    text-align: center;
+    font-size: 35px;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+/*[placeholder]:focus::-webkit-input-placeholder {*/
+/*    transition: opacity 0.3s 0.3s ease;*/
+/*    opacity: 0;*/
+/*}*/
+
+.padding-name {
+    padding: 0;
+    margin: 0;
+}
+

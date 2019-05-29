@@ -1,0 +1,9 @@
+.navbar{
+    background: #0b2e13 !important;
+}
+.navbar >.container >a{
+    color: white;
+}
+.nav-link{
+    color:white !important;
+}

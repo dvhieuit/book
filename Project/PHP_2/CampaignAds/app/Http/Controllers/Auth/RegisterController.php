@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Response;
 class RegisterController extends Controller
 {
     /*
@@ -46,13 +48,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+  /*  protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        return Response::json(['errors' => $validator->errors()]);
     }
 
     /**
@@ -61,12 +64,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+   /* protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        User::create([
+            'full_name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id'=>1
         ]);
+        return Response::json(['success' => '1']);
+    }*/
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'lname' => 'required|max:255',
+            'fname' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $data = $request->all();
+
+        if ($validator->passes()) {
+
+            // Store your user in database
+
+            $user = User::create([
+                'full_name' => $data['fname']." ".$data['lname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id'=>1,
+                'active'=>1,
+                'remember_token'=>Str::random(100)
+            ]);
+            $this->guard()->login($user);
+            return Response::json(['success' => '1']);
+
+        }
+
+        return Response::json(['errors' => $validator->errors()]);
     }
 }
