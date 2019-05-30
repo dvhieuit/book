@@ -44,3 +44,35 @@
 	border-radius: 0;
 	background-color: #044256;
 }
+
+#emailLogin-error {
+	color:red
+}
+
+#passwordLogin-error {
+	color:red
+}
+
+#first_name-error {
+	color:red
+}
+
+#last_name-error {
+	color:red
+}
+
+#email-error {
+	color:red
+}
+
+#password-error {
+	color:red
+}
+
+#password-confirm-error {
+	color:red
+}
+
+#phone-error {
+	color:red
+}
