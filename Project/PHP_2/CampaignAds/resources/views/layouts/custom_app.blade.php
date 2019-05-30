@@ -17,7 +17,6 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <script src="{{ asset('js/validate_register.js') }}"></script>
 
 
     <link href="{{ asset('css/pop-up.css') }}" rel="stylesheet">
@@ -210,7 +209,7 @@
                                                         </div>
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="password" type="password"
+                                                                <input id="password" type="password" minlength="6"
                                                                        placeholder="Type Your Password&ast;"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
@@ -224,7 +223,7 @@
 
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <button type="button" class="btn btn-primary btn-get-started col-12 justify-content-center"
+                                                                <button type="submit" class="btn btn-primary btn-get-started col-12 justify-content-center"
                                                                         id="submitLoginForm">
                                                                     {{ __('LOGIN') }}
                                                                 </button>
@@ -246,7 +245,9 @@
             <!--/.Content-->
         </div>
     </div>
+    </div>
 </div>
+
 
 <script type="text/javascript">
     function validateRegister() {
@@ -308,12 +309,8 @@
                 },
             });
         });
-    });
-</script>
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
         $('#formLogin').submit(function (e) {
             e.preventDefault();
             var loginForm = $("#formLogin");
