@@ -12,6 +12,7 @@ $(".form_user").validate({
     },
     "user[phone_number]": {
       required: true,
+      number: true,
       maxlength: 11,
       minlength: 9
     },
@@ -36,6 +37,7 @@ $(".form_user").validate({
     },
     "user[phone_number]": {
       required: "Phone number is required.",
+      number: "Phone is number.",
       maxlength: "Phone number must be less than 11",
       minlength: "Phone number must be more than 9"
     },

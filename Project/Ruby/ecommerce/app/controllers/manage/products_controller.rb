@@ -1,4 +1,6 @@
 class Manage::ProductsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :load_catalogs, expect: :index
 
   def new
@@ -15,19 +17,19 @@ class Manage::ProductsController < ApplicationController
     else
       flash[:dange] = "Add product fail!"
     end
-    redirect_to root_path
+    redirect_to manage_products_path
   end
 
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result.order_by_create.paginate(page: params[:page], per_page: 20)
-    # @products = Product.order_by_create.paginate(page: params[:page], per_page: 20)
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :catalog_id, :image)
+    params.require(:product).permit(:name, :description, :price, :quantity,
+      :catalog_id, :image)
   end
 
   def load_catalogs

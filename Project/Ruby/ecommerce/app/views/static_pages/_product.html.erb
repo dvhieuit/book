@@ -1,0 +1,18 @@
+<div class="item">
+  <a href="">
+    <div class="card-jfy-image">
+      <img class="image" src=<%= product.image.url(:large) %>>
+    </div>
+    <div class="card-jfy-item-desc">
+      <div class="card-jfy-title">
+        <span class="title"><%= product.name %></span>
+      </div>
+      <div class="hp-mod-price">
+        <div class="hp-mod-price-first-line">
+          <span class="price"><%= number_to_currency(product.price, locale: :vi) %></span>
+          <span class="currency"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
