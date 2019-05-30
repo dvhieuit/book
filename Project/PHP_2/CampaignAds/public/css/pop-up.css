@@ -1,0 +1,112 @@
+.full-pop-up{
+    background-color: #25313e;
+}
+.nav-reg-log-padding{
+    padding-top: 5%;
+    border: none;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-size: 20px;
+}
+.nav-reg-log-padding li a{
+    background-color: #686868;
+    border: none;
+    color: white ;
+}
+.nav-reg-log-padding li a:focus{
+    background-color: green;
+    border: black;
+    color: white ;
+}
+.nav-reg-log-padding li a:hover{
+    background-color: #227dc7;
+    border: black;
+    color: white ;
+}
+.nav-tabs .nav-link.active {
+    background-color: #044256;
+    color: white;
+    border: none;
+}
+.nav-tabs .nav-link{
+    border: none;
+    border-radius: unset;
+}
+
+.nav-item-reg-log{
+    width: 50%;
+    text-align: center;
+    border: none;
+    color: white;
+    letter-spacing: 0.08em;
+
+}
+.card-reg-log{
+    background-color: #25313e;
+    color: white;
+    border: none;
+}
+.card-reg-log h4{
+    margin: 0 auto;
+    font-family: Arial;
+    font-size: 30px;
+    text-align: center;
+    color: #c9c6b6;
+}
+.form-row-input input{
+    background: transparent;
+    border-radius: unset;
+}
+/*[placeholder]:focus::-webkit-input-placeholder {*/
+/*    color: transparent;*/
+/*    background-color: transparent;*/
+/*}*/
+
+.btn-get-started{
+    font-size: 27px;
+    margin-top: 7%;
+    background-color: #044256;
+    border: none;
+    letter-spacing: 0.1em;
+}
+nav-item-reg-log tab:focus, tab:active{
+    background-color: #044256;
+}
+
+/* '*'green ma ko duoc*/
+[placeholder]:active::-webkit-input-placeholder {
+    border: none;
+}
+
+[placeholder]:after::-moz-placeholder {
+    color:red;
+    content: "*";
+}
+
+[placeholder]:after::placeholder {
+    color:red;
+    content: "*";
+}
+
+::-webkit-input-placeholder {
+    color: blue;
+}
+
+/*Xoa vien xanh tren the input khi click vao*/
+.form-control:focus  {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-primary{
+    border-radius: unset;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none!important;
+}
+
+/*doi border form giong voi placeholder*/
+.form-control{
+    border: 1px solid #495057;
+}

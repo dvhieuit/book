@@ -77,8 +77,8 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'lname' => 'required|max:255',
-            'fname' => 'required|max:255',
+            'name' => 'required|max:255',
+//            'fname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -90,7 +90,7 @@ class RegisterController extends Controller
             // Store your user in database
 
             $user = User::create([
-                'full_name' => $data['fname']." ".$data['lname'],
+                'full_name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'role_id'=>1,
