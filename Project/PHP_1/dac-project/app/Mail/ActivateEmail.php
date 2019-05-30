@@ -30,8 +30,7 @@ class ActivateEmail extends Mailable
     public function build()
     {
         $fullname = $this->data['fullname'];
-        $domain = config('dacproject.info.domain') . $this->data['token_active_mail'];
-        dd($domain);
+        $domain = config('dacproject.info.domain') .'activate?token_active_mail=' . $this->data['token_active_mail'];
         return $this->view('mail.activateMail',compact('fullname','domain'));
     }
 
