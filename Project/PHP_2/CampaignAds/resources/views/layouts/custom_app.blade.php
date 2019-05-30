@@ -14,6 +14,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app_bar.css') }}" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
@@ -121,7 +123,7 @@
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
                                                                 <input id="name" type="text"
-                                                                       placeholder="Fullname&ast;"
+                                                                       placeholder="Fullname&ast;" maxlength="255"
                                                                        class="form-control @error('name') is-invalid @enderror"
                                                                        name="name" value="{{ old('name') }}" required
                                                                        autocomplete="name" >
@@ -132,7 +134,7 @@
                                                         </div>
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="register_email" type="email"
+                                                                <input id="register_email" type="email" maxlength="255"
                                                                        placeholder="Name@example.com&ast;"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
@@ -144,7 +146,7 @@
                                                         </div>
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="password-register" type="password"
+                                                                <input id="password-register" type="password" minlength="6"
                                                                        placeholder="Type your password&ast;"
                                                                        class="form-control @error('password') is-invalid @enderror"
                                                                        name="password" required
@@ -156,7 +158,7 @@
                                                         </div>
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="password-confirm" type="password"
+                                                                <input id="password-confirm" type="password" minlength="6"
                                                                        placeholder="Retype your password&ast;"
                                                                        class="form-control" name="password_confirmation"
                                                                        required autocomplete="new-password">
@@ -197,7 +199,7 @@
                                                         <spans class="text-center text-danger" id="failure-error-login"></spans>
                                                         <div class="form-group row form-row-input">
                                                             <div class="col-md-12">
-                                                                <input id="email" type="email"
+                                                                <input id="email" type="email" maxlength="255"
                                                                        placeholder="Type your Email&ast;"
                                                                        class="form-control @error('email') is-invalid @enderror"
                                                                        name="email" value="{{ old('email') }}" required
@@ -351,7 +353,7 @@
                             $('#LogIn').modal('hide');
                             $('#success-msg').addClass('hide');
                         }, 1000);
-                        window.location.href = "../home";
+                        window.location.href = "";
                     }
                 },
             });
