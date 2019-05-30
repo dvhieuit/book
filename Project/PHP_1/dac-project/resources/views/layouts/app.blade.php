@@ -129,13 +129,13 @@
 
         $('#formRegister').submit(function (e) {
             e.preventDefault()
+            $('#error-firstname').html('')
+            $('#error-lastname').html('')
+            $('#error-email').html('')
+            $('#error-password').html('')
+            $('#error-phone').html('')
             if ($('#formRegister').valid()) {
                 console.log('ok register');
-                $('#error-firstname').html('')
-                $('#error-lastname').html('')
-                $('#error-email').html('')
-                $('#error-password').html('')
-                $('#error-phone').html('')
                 formInputs = $('#formRegister').serialize();
                 $.ajax({
                     url: '/register',
@@ -177,11 +177,11 @@
 
         $('#formLogin').submit(function (e) {
             e.preventDefault()
+            $('#error-emailLogin').html('')
+            $('#error-passwordLogin').html('')
+            $('#activate').html('')
             if ($('#formLogin').valid()) {
                 console.log('ok Login')
-                $('#error-emailLogin').html('')
-                $('#error-passwordLogin').html('')
-                $('#activate').html('')
                 formInputs = $('#formLogin').serialize();
                 $.ajax({
                     url: '/login',
@@ -205,7 +205,7 @@
                         }
                     }
                 });
-            }else{
+            } else {
                 console.log('error Login')
             }
         });
