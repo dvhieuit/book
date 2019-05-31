@@ -8,9 +8,9 @@ class Home extends Component {
         
         this.state ={
             id: '',
-            email : 'abcxyz11@gmail.com',
+            email : 'abcxyz16@gmail.com',
             password : 'Abc1234@',
-			fullName : 'ABC11',
+			fullName : 'ABC15',
             phoneNumber : '1313031165',
             role:'ROLE_CUSTOMER',
             imageURL: 'https://i.imgur.com/2G9UXB2.png'
