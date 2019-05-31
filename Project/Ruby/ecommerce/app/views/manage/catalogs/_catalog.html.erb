@@ -1,0 +1,9 @@
+<tr>
+  <th class="srno"></th>
+  <td><%= catalog.name %></td>
+  <td>
+    <%= link_to "Edit", edit_manage_catalog_path(catalog), class: "btn btn-outline-primary btn-sm" %> 
+    <%= link_to "Delete", manage_catalog_path(catalog), method: :delete, class: "btn btn-outline-danger btn-sm",
+      data: { confirm: "You sure!" } %>
+  </td>
+</tr>

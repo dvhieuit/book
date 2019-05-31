@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   }
   namespace :manage do
     resources :products
+    resources :catalogs
   end
 end

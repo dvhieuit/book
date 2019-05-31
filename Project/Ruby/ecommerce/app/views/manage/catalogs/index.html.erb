@@ -1,0 +1,21 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewCatalog">
+  Open modal
+</button>
+<%= render 'form' %>
+<div class="p-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody class="catalog-new">
+      <%= render @catalogs %>
+    </tbody>
+  </table>
+</div>
