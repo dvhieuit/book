@@ -35,6 +35,13 @@ body {
     padding: 1rem;
     transition: all 0.2s;
   }
+  .product-button {
+    font-size: 100%;
+    border-radius: 0;
+    letter-spacing: 0;
+    font-weight: normal;
+    padding: 6px;
+  }
 }
 
 .form-label-group {

@@ -1,13 +1,12 @@
 class Manage::ProductsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :load_catalogs, expect: :index
 
+  respond_to :html, :json
+
   def new
     @product = Product.new
-    respond_to do |format|
-      format.js
-    end
+    respond_modal_with @product
   end
 
   def create
@@ -17,7 +16,7 @@ class Manage::ProductsController < ApplicationController
     else
       flash[:dange] = "Add product fail!"
     end
-    redirect_to manage_products_path
+    respond_modal_with @product, location: manage_products_path
   end
 
   def index
