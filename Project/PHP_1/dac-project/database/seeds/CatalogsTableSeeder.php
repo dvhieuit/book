@@ -13,12 +13,12 @@ class CatalogsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        DB::table('Catalogs')->truncate();
+        DB::table('catalogs')->truncate();
 
         $catalogs = ['laptop', 'phone' , 'tablet'];
 
         foreach ($catalogs as $catalog) {
-            DB::table('Catalogs')->insert([
+            DB::table('catalogs')->insert([
                 'name' => $catalog
             ]);
         }
