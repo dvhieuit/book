@@ -1,10 +1,12 @@
 <div class="search-home">
-  <div class="input-group md-form form-sm form-2 pl-0 form-search">
-    <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
-    <div class="input-group-append">
-      <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
+  <%= search_form_for(@q, url: root_path, class: "form-search" ) do |f|%>
+    <div class="col-sm-12"> 
+      <%= f.search_field :name_or_description_cont, class: "form-control",
+        placeholder: "Search" %>
     </div>
-  </div>
+    <button type="submit"><i class="fas fa-search text-grey" aria-hidden="true"></i>
+    </button>
+  <% end %>
 </div>
 
 <header>

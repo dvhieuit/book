@@ -1,17 +1,11 @@
-<div class="container-fluid">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</div>
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
-</div>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
 
 <div class="p-4">
   <div class="col-lg-6 m-auto">
     <%= search_form_for([:manage, @q], html: {class: "row"}) do |f|%>
-      <div class="col-sm-12">
+      <div class="col-sm-12"> 
         <%= f.search_field :name_or_description_cont, class: "form-control",
           placeholder: "Name or Description" %>
       </div>
