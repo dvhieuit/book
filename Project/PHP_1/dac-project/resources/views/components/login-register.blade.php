@@ -3,7 +3,7 @@
     <div class="modal-dialog cascading-modal" role="document">
         <div class="modal-content">
             <div class="modal-c-tabs">
-                <ul class="justify-content-center nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                <ul class="justify-content-center nav nav-tabs md-tabs tabs-2 darken-3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#panelLogin" role="tab">
                             <i class="fas fa-user-plus mr-1"></i>

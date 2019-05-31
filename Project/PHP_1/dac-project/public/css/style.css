@@ -1,22 +1,21 @@
 .heading-title {
     text-align: center;
 }
-.logo {
-	width: 200px;
-	height: 100px;
+.navbar-brand{
+	width: 20%;
 }
 .avatar{
 	width:30px;
 	height:30px;
 }
 .tab-content{
-	background-color: #25313E;
+	background-color: #6B0F47;
 }
 .form-control{
 	border-radius: 0;
 }
 .tab-content div,.nav-tabs {
-	background-color: #25313E;
+	background-color: #6B0F47;
 	border: none;
 }
 .nav-tabs{
@@ -37,42 +36,28 @@
 }
 .modal .active{
 	border: none;
-	background-color: #044256 !important;
+	background-color: #951F67 !important;
 }
 .custom-btn {
 	border:none;
 	border-radius: 0;
 	background-color: #044256;
 }
+.menu{
+	background-color: #660740;
+}
+.menu li{
+	margin-right: 20px;
+}
 
-#emailLogin-error {
+#emailLogin-error,#passwordLogin-error,#first_name-error,#last_name-error,#email-error,#password-error,#password-confirm-error,#phone-error{
 	color:red
 }
 
-#passwordLogin-error {
-	color:red
-}
+@media (min-width: 800px) and (max-width: 850px) {
+      .navbar:not(.top-nav-collapse) {
+          background: #1C2331!important;
+      }
+  }
 
-#first_name-error {
-	color:red
-}
-
-#last_name-error {
-	color:red
-}
-
-#email-error {
-	color:red
-}
-
-#password-error {
-	color:red
-}
-
-#password-confirm-error {
-	color:red
-}
-
-#phone-error {
-	color:red
-}
+.carousel,.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item,.view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
