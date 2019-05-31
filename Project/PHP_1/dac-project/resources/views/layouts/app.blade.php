@@ -17,6 +17,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 </head>
 <body>
 <div id="app">
@@ -66,7 +69,6 @@
                                     @csrf
                                 </form>
                             </div>
-
                     @endguest
                 </ul>
             </div>
@@ -80,10 +82,6 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
 </body>
 </html>
 <script type="text/javascript">
@@ -171,8 +169,6 @@
             } else {
                 console.log('error register');
             }
-
-
         });
 
         $('#formLogin').submit(function (e) {

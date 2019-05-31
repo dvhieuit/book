@@ -21,6 +21,10 @@ Route::get('/test', function () {
 
 Route::get('/activate', 'Auth\RegisterController@updateStatus');
 
+Route::get('/user', 'UserController@index')->name('user');
+
+Route::post('/user/delete', 'UserController@deleteUser')->name('user.delete');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
