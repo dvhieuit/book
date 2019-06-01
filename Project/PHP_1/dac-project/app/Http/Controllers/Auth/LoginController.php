@@ -81,6 +81,7 @@ class LoginController extends Controller
                 'active' => 1,
             ])->first();
             if ($check) {
+                session(['user' => Auth::user()->email]);
                 return $this->sendLoginResponse($request);
             } else {
                 return response([

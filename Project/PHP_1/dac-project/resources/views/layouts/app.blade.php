@@ -10,11 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <script src="https://kit.fontawesome.com/488ad36053.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <!-- Styles -->
-
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mdb.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -58,6 +57,24 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    @if(Auth::user()->role_id==1)
+                                    <a class="dropdown-item" href="{{ route('users') }}" >
+                                        {{ __('User Management') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('catalogs') }}" >
+                                        {{ __('Catalogs Management') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('products') }}" >
+                                        {{ __('Products Management') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('campaigns') }}" >
+                                        {{ __('Campaigns Management') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('reports') }}">
+                                        {{ __('Reports Management') }}
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -76,7 +93,7 @@
             </div>
         </nav>
         <!--Navbar -->
-        <nav class="menu mb-1 navbar navbar-expand-lg navbar-dark default-color">
+        <nav class="menu navbar navbar-expand-lg navbar-dark default-color">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -130,7 +147,7 @@
         @component('components.login-register')
         @endcomponent
         <!--Carousel Wrapper-->
-        <div style="height: 73vh" id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <div style="height: 50vh" id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
           <!--Indicators-->
           <ol class="carousel-indicators">
@@ -406,6 +423,7 @@
 </div>
 
 <!-- Scripts -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>

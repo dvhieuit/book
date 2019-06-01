@@ -2,7 +2,7 @@
     text-align: center;
 }
 .navbar-brand{
-	width: 20%;
+	width: 200px;
 }
 .avatar{
 	width:30px;
@@ -38,6 +38,9 @@
 	border: none;
 	background-color: #951F67 !important;
 }
+.teal.accent-3{
+	background-color: #951F67 !important;
+}
 .custom-btn {
 	border:none;
 	border-radius: 0;
@@ -53,11 +56,8 @@
 #emailLogin-error,#passwordLogin-error,#first_name-error,#last_name-error,#email-error,#password-error,#password-confirm-error,#phone-error{
 	color:red
 }
-
-@media (min-width: 800px) and (max-width: 850px) {
-      .navbar:not(.top-nav-collapse) {
-          background: #1C2331!important;
-      }
-  }
-
 .carousel,.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item,.view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
+
+/*Sidebar*/
+
+/*Sidebar*/

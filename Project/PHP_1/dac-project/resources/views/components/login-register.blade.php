@@ -6,12 +6,12 @@
                 <ul class="justify-content-center nav nav-tabs md-tabs tabs-2 darken-3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#panelLogin" role="tab">
-                            <i class="fas fa-user-plus mr-1"></i>
+                            <i class="fas fa-user mr-1"></i>
                             Log In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#panelRegister" role="tab"><i
-                                    class="fas fa-user mr-1"></i>
+                                    class="fas fa-user-plus mr-1"></i>
                             Sign Up</a>
                     </li>
                 </ul>
