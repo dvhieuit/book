@@ -1,0 +1,55 @@
+<div id="registration-form" class="tab-pane fade" role="tabpanel">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, html: { id: "registrationForm" }) do |f| %>
+    <div class="title-signup">Sign Up for Free</div>
+    <div class="form-group d-flex mb-0">
+      <%= f.text_field :first_name, autofocus: true, class: "form-control mr-1", placeholder: "First Name*", "data-error" => "#errFirstName" %>
+      <%= f.text_field :last_name, class: "form-control ml-1", placeholder: "Last Name*", "data-error" => "#errLastName" %>
+    </div>
+    <div class="d-flex">
+      <div class="error-signup w-50" id="errFirstName"></div>
+      <div class="error-signup" id="errLastName"></div>
+    </div>
+    <div class="form-group mb-0 mt-3">
+      <%= f.email_field :email, required: true, autocomplete: "email", class: "form-control", placeholder: "Email Address*", "data-error" => "#errEmail" %>
+    </div>
+    <div class="error-signup" id="errEmail"></div>
+    <div class="form-group mb-0 mt-3">
+      <%= f.password_field :password, required: true, class: "form-control", placeholder: "Set A Password*", "data-error" => "#errPassword" %>
+    </div>
+    <div class="error-signup" id="errPassword"></div>
+    <div class="form-group mb-0 mt-3">
+      <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "Password Confirmation*", "data-error" => "#errPassConfirm" %>
+    </div>
+    <div class="error-signup" id="errPassConfirm"></div>
+    <button type="submit" class="btn mt-3 signup-submit">GET STARTED</button>
+  <% end %>
+</div>
+
+<script>
+  <%= render 'devise/registrations/validate.js' %>
+  $("#registrationForm").on("ajax:success", function(even) {
+    [data, status] = event.detail
+    $('.login-register-form').modal("hide")
+    Swal.fire({
+        title: 'Successful',
+        text: data.inactive,
+        type: 'success',
+    })
+  }).on("ajax:error", function(even) {
+    [data, status] = event.detail
+    error = data.errors
+    console.log(error)
+    if(error.first_name){
+      $('#errFirstName').html(error.first_name[0])
+    }
+    if(error.last_name){
+      $('#errLastName').html(error.last_name[0])
+    }
+    if(error.password){
+      $('#errPassword').html(error.password[0])
+    }
+    if(error.password_confirmation){
+      $('#errPassConfirm').html(error.password_confirmation[0])
+    }
+  });
+</script>

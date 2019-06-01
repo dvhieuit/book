@@ -30,7 +30,7 @@
 
 <script>
   $("#formCatalog").bind("ajax:error", function(even) {
-    [data, status, xhr] = event.detail
+    [data, status] = event.detail
     $("#errName").html(data.name)
   });
 </script>

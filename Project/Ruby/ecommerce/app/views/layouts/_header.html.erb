@@ -40,6 +40,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user"></i>
+            <%= full_name(current_user) %>
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-default"
             aria-labelledby="navbarDropdownMenuLink-333">
@@ -49,13 +50,31 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to t(".login"), user_session_path, class: "nav-link" %>
+          <a href="#" data-toggle="modal" data-target=".login-register-form" class="nav-link">
+            Login/Register
+          </a>
         </li>
-        <li class="nav-item">
-          <%= link_to t(".sign_up"), new_user_registration_path, class: "nav-link" %>
-        </li>
+        <div class="modal fade login-register-form" role="dialog">
+          <div class="modal-dialog modal-nm">
+            <div class="modal-content signup-in">
+              <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a class="active tab-1" data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a class="tab-2" data-toggle="tab" href="#registration-form"> Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+                </ul>
+                <div class="tab-content">
+                  <%= render 'devise/sessions/new' %>
+                  <%= render 'devise/registrations/new' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       <% end %>
     </ul>
   </div>
 </nav>
 <!--/.Navbar -->
+
+<!-- Login / Register Modal-->
