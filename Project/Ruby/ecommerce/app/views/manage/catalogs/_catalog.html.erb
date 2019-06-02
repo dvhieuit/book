@@ -3,7 +3,6 @@
   <td><%= catalog.name %></td>
   <td>
     <%= link_to "Edit", edit_manage_catalog_path(catalog), remote: true, class: "btn btn-outline-primary btn-sm" %> 
-    <%= link_to "Delete", manage_catalog_path(catalog), remote: true, method: :delete, class: "btn btn-outline-danger btn-sm",
-      data: { confirm: "You sure!" } %>
+    <%= link_to "Delete", delete_manage_catalog_path(catalog), remote: true, class: "btn btn-outline-danger btn-sm"%>
   </td>
 </tr>

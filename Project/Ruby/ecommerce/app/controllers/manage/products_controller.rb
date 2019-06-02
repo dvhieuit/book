@@ -24,6 +24,9 @@ class Manage::ProductsController < ApplicationController
     @product.update_attributes(product_params)
   end
 
+  def delete
+  end
+
   def destroy
     @product.destroy
   end
@@ -39,7 +42,7 @@ class Manage::ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     return if @product
     flash[:danger] = "Product not found"
-    redirect_to :root
+    redirect_to manage_products_path
   end
 
   def load_catalogs

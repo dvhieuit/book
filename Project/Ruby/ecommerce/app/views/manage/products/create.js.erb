@@ -4,7 +4,7 @@ $("ul.errors").html("")
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
   <% end %>
 <% else %>
-  $("#listProduct").modal("hide")
+  $("#modalFormProduct").modal("hide")
   $("#listProduct").prepend( "<%= j render @product %>" );
   Swal.fire(
     'Success',

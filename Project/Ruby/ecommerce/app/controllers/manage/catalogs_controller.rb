@@ -19,6 +19,9 @@ class Manage::CatalogsController < ApplicationController
     @catalog.update_attributes(catalog_params)
   end
 
+  def delete
+  end
+
   def destroy
     @catalog.destroy
   end

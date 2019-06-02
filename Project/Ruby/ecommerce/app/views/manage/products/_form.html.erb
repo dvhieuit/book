@@ -39,10 +39,13 @@
         </div>
 
         <div class="col-md-12 mb-2">
-          <%= f.label :image, class: "mb-0" %>
           <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "choose-picture" %>
         </div>
-        <div><%= image_tag @product.image.url(:thumb) if @product.image? %></div>
+        <% if @product.image? %>
+          <div class="col-md-12 mb-2"><%= image_tag @product.image.url(:medium), width: 200 %></div>
+        <% else %>
+          <div class="col-md-12 mb-2"><%= image_tag "", width: 200, class: "picture" %></div>
+        <% end %>
       </div>
 
       <div class="modal-footer">
@@ -51,3 +54,5 @@
     </div>
   </div>
 <% end %>
+
+<%= javascript_include_tag "choose_picture" %>

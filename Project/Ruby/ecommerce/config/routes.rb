@@ -6,7 +6,15 @@ Rails.application.routes.draw do
     confirmations: "users/confirmations"
   }
   namespace :manage do
-    resources :products
-    resources :catalogs
+    resources :products do
+      member do
+        get :delete
+      end
+    end
+    resources :catalogs do
+      member do
+        get :delete
+      end
+    end
   end
 end

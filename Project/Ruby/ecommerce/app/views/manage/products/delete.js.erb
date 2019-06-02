@@ -1,0 +1,9 @@
+Swal.fire({
+  title: 'Are you sure delete?',
+  text: '<%= @product.name %>',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: '<%= link_to "Yes,delete", manage_product_path(@product), remote: true, method: :delete, class: "confirm-swal" %>'
+})
