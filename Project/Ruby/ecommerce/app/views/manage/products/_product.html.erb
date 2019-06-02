@@ -1,12 +1,12 @@
-<tr>
+<tr id="productId<%= product.id %>">
   <th class="srno"></th>
   <td><%= product.name %></td>
   <td><%= number_to_currency(product.price, locale: :vi) %></td>
   <td><%= product.quantity %></td>
   <td><%= image_tag(product.image.url(:thumb)) %></td>
   <td>
-    <%= link_to "Edit", edit_manage_product_path(product), class: "btn btn-outline-primary btn-sm", data: { modal: true } %> 
-    <%= link_to "Delete", manage_product_path(product), method: :delete, class: "btn btn-outline-danger btn-sm",
+    <%= link_to "Edit", edit_manage_product_path(product), remote: true, class: "btn btn-outline-primary btn-sm" %> 
+    <%= link_to "Delete", manage_product_path(product), remote: true, method: :delete, class: "btn btn-outline-danger btn-sm",
       data: { confirm: "You sure!" } %>
   </td>
 </tr>

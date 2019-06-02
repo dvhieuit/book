@@ -20,7 +20,7 @@
       </div>
     <% end %>
   </div>
-  <%= link_to 'Add product', new_manage_product_path, class: 'btn btn-primary mb-2', data: { modal: true } %>
+  <%= link_to 'Add product', new_manage_product_path, remote: true, class: 'btn btn-primary mb-2' %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -32,9 +32,11 @@
         <th>Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="listProduct">
       <%= render @products %>
     </tbody>
   </table>
   <%= will_paginate %>
 </div>
+
+<div class="modal" id="modalFormProduct"></div>

@@ -1,4 +1,5 @@
 class Manage::CatalogsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_catalogs, except: %i(create new index)
 
   def create

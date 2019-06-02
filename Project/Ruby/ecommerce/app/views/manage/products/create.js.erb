@@ -1,0 +1,14 @@
+$("ul.errors").html("")
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#listProduct").modal("hide")
+  $("#listProduct").prepend( "<%= j render @product %>" );
+  Swal.fire(
+    'Success',
+    'Create product success',
+    'success'
+  )
+<% end %>

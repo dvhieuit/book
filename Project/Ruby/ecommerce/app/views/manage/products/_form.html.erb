@@ -1,41 +1,53 @@
-<%= form_for([:manage, @product], remote: request.xhr?, html: {:class => "form-signin form_user", data: { modal: true } }) do |f| %>
-  <div class="modal-body">
-    <%= render "shared/error_messages", object: f.object %>
-    <div class="form-label-group">
-      <%= f.text_field :name, class: "form-control form-square", placeholder: "Name", "data-error" => "#errname" %>
-      <%= f.label :name %>
-    </div>
-    <div class="form-label-group">
-      <%= f.text_area :description, class: "form-control form-square", placeholder: "Description", "data-error" => "#errname" %>
-      <%= f.label :description %>
-    </div>
-
-    <div class="d-flex">
-      <div class="form-label-group mr-1">
-        <%= f.number_field :price, min: 1000, class: "form-control form-square", placeholder: "Price(vnd)" %>
-        <%= f.label :price, "Price(vnd)" %>
+<%= form_for([:manage, @product], remote: true, html: {class: "form-group"}) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><%= yield(:title) %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-      <div class="form-label-group ml-1">
-          <%= f.number_field :quantity, min: 1, class: "form-control form-square", placeholder: "Quantity" %>
-          <%= f.label :quantity %>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <ul class="errors"></ul>
+        <div class="col-md-12 mb-2">
+          <%= f.label :name, class: "mb-0" %>
+          <%= f.text_field :name, class: "form-control", placeholder: "Name", "data-error" => "#errname" %>
+        </div>
+        <div class="col-md-12 mb-2">
+          <%= f.label :description, class: "mb-0" %>
+          <%= f.text_area :description, class: "form-control", placeholder: "Description", "data-error" => "#errname" %>
+        </div>
+
+        <div class="d-flex mb-2">
+          <div class="col-md-6">
+            <%= f.label :price, "Price(vnd)", class: "mb-0" %>
+            <%= f.number_field :price, min: 1000, class: "form-control", placeholder: "Price(vnd)" %>
+          </div>
+
+          <div class="col-md-6">
+              <%= f.label :quantity, class: "mb-0" %>
+              <%= f.number_field :quantity, min: 1, class: "form-control", placeholder: "Quantity" %>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-2">
+          <%= f.label :catalog, class: "mb-0" %>
+          <%= f.select :catalog_id, @catalogs, {selected: @catalogs.first},
+            {class: "form-control"} %>
+        </div>
+
+        <div class="col-md-12 mb-2">
+          <%= f.label :image, class: "mb-0" %>
+          <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "choose-picture" %>
+        </div>
+        <div><%= image_tag @product.image.url(:thumb) if @product.image? %></div>
+      </div>
+
+      <div class="modal-footer">
+        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
       </div>
     </div>
-
-    <%= f.label :catalog %>
-    <div class="form-group">
-      <%= f.select :catalog_id, @catalogs, {selected: @catalogs.first},
-        {class: "form-control form-square pl-3"} %>
-    </div>
-
-    <%= f.label :image, class: "d-flex" %>
-    <span class="picture">
-      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "choose-picture" %>
-    </span>
-    <div><%= image_tag @product.image.url(:thumb) if @product.image? %></div>
-  </div>
-
-  <div class="modal-footer">
-    <%= f.submit yield(:button_text), class: "btn btn-outline-primary product-button" %>
   </div>
 <% end %>
