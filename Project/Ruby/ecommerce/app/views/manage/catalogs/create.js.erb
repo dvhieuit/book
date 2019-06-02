@@ -1,2 +1,15 @@
-$(".catalog-new").prepend( "<%= j render @catalog %>" );
-$("#modalNewCatalog").modal("toggle");
+$("#errNameCatalog").html("")
+<% if @catalog.errors.any? %>
+  <% @catalog.errors.full_messages.each do |message| %>
+    $("#errNameCatalog").html("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $(".catalog-new").prepend( "<%= j render @catalog %>" );
+  $("#catalog_name").val("")
+  Swal.fire(
+    'Success',
+    'Create success',
+    'success'
+  )
+<% end %>
+

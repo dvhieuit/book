@@ -1,11 +1,16 @@
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewCatalog">
-  Open modal
-</button>
-<%= render 'form' %>
 <div class="p-4">
+  <%= form_for [:manage, @catalog], remote: true, html: {class: "form-inline inline-box"} do |f| %>
+      <div class="form-group mr-2">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name", "data-error" => "#errNameCatalog" %>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">New catalog</button>
+      </div>
+  <% end %>
+  <div id="errNameCatalog" class="error-signup mb-3"></div>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -18,4 +23,6 @@
       <%= render @catalogs %>
     </tbody>
   </table>
+</div>
+<div class="modal" id="modalNewCatalog">
 </div>

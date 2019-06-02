@@ -1,0 +1,14 @@
+$("ul.errors").html("")
+<% if @catalog.errors.any? %>
+  <% @catalog.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#catalogId<%= @catalog.id %>").replaceWith("<%= j (render @catalog) %>")
+  $("#modalNewCatalog").modal("hide")
+  Swal.fire(
+    'Success',
+    'Edit success',
+    'success'
+  )
+<% end %>
