@@ -1,6 +1,7 @@
 package com.dac.demo.controller;
 
 import com.dac.demo.model.ServiceResult;
+import com.dac.demo.model.resp.AdminCreateProductResponse;
 import com.dac.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,4 +40,15 @@ public class AdminController {
                 request.getRole()),
                 HttpStatus.OK);
     }
+
+    @GetMapping("/product/all")
+    public ServiceResult getAllProduct() {
+        return adminService.getAllProducts();
+    }
+
+    @PostMapping("/product/create")
+    public ServiceResult<AdminCreateProductResponse> createProduct(@RequestBody AdminCreateProductRequest request) {
+        return adminService.createProduct(request);
+    }
+
 }

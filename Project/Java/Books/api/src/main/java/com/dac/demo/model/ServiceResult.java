@@ -2,17 +2,13 @@ package com.dac.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+@Getter
+@Setter
+public class ServiceResult<T> {
 
-public class ServiceResult {
-    @Getter
-    @Setter
     private Status status = Status.SUCCESS;
-    @Getter
-    @Setter
     private String message;
-    @Getter
-    @Setter
-    private Object data;
+    private T data;
 
     public enum Status {
         SUCCESS, FAILED
