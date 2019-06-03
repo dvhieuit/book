@@ -13,7 +13,7 @@ class CreateReportHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('ReportHours', function (Blueprint $table) {
+        Schema::create('report_hours', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('campaign_id');
             $table->datetime('datetime');
@@ -29,6 +29,6 @@ class CreateReportHoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ReportHours');
+        Schema::dropIfExists('report_hours');
     }
 }

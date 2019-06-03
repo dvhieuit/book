@@ -13,7 +13,7 @@ class CreateCampaignDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('CampaignDetails', function (Blueprint $table) {
+        Schema::create('campaign_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('campaign_id');
             $table->integer('views');
@@ -29,6 +29,6 @@ class CreateCampaignDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('CampaignDetails');
+        Schema::dropIfExists('campaign_details');
     }
 }

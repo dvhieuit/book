@@ -13,22 +13,22 @@ class ProductsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        DB::table('Products')->truncate();
+        DB::table('products')->truncate();
 
-        $catalogs = DB::table('Catalogs')->get()->toArray();
+        $catalogs = DB::table('catalogs')->get()->toArray();
         $array_catalog_id = [];
         foreach ($catalogs as $catalog) {
             array_push($array_catalog_id, $catalog->id);
         }
 
-        $users = DB::table('Users')->where('role_id', '<>', 1)->get();
+        $users = DB::table('users')->where('role_id', '<>', 1)->get();
         $array_user_id = [];
         foreach ($users as $user) {
             array_push($array_user_id, $user->id);
         }
 
         for ($i = 0; $i < 100; $i++) {
-            DB::table('Products')->insert(
+            DB::table('products')->insert(
                 [
                     'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
                     'price' => $faker->randomNumber(4) * 1000,

@@ -13,13 +13,13 @@ class CampaignsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        DB::table('Campaigns')->truncate();
+        DB::table('campaigns')->truncate();
 
         $status = [1, 2, 3];
 
         $type_id = [1, 2];
 
-        $users = DB::table('Users')->where('role_id', '<>', 1)->get();
+        $users = DB::table('users')->where('role_id', '<>', 1)->get();
         $array_user_id = [];
         foreach ($users as $user) {
             array_push($array_user_id, $user->id);
@@ -28,7 +28,7 @@ class CampaignsTableSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             $user_id = $faker->randomElement($array_user_id);
 
-            $products = DB::table('Products')->where('user_id', $user_id)->get();
+            $products = DB::table('products')->where('user_id', $user_id)->get();
             $array_product_id = [];
             foreach ($products as $product) {
                 array_push($array_product_id, $product->id);
@@ -38,7 +38,7 @@ class CampaignsTableSeeder extends Seeder
             $start_date = clone  $day_temp;
             $end_date = $day_temp->addDays(rand(1,7));
 
-            DB::table('Campaigns')->insert(
+            DB::table('campaigns')->insert(
                 [
                     'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                     'user_id' => $user_id,
