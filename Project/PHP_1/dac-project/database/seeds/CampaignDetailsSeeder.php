@@ -13,9 +13,9 @@ class CampaignDetailsSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        DB::table('CampaignDetails')->truncate();
+        DB::table('campaign_details')->truncate();
 
-        $campaigns = DB::table('Campaigns')->get()->toArray();
+        $campaigns = DB::table('campaigns')->get()->toArray();
         $array_campaign_id = [];
         foreach ($campaigns as $campaign) {
             array_push($array_campaign_id, $campaign->id);
@@ -28,7 +28,7 @@ class CampaignDetailsSeeder extends Seeder
             }else{
                 $value_click = 0;
             }
-            DB::table('CampaignDetails')->insert(
+            DB::table('campaign_details')->insert(
                 [
                     'campaign_id' => $faker->randomElement($array_campaign_id),
                     'views' => $value_view,
