@@ -16,7 +16,7 @@ public class Initializer implements CommandLineRunner {
 
     @Override
     public void run(String... strings){
-        Stream.of("Post 1", "Post 2", "Post 3", "Post 4", "Post 5")
+        Stream.of("Thuy Nhung", "Quynh Trang", "Van A", "Van Anh", "Van Tuan")
                 .forEach(content -> postRepository.save(new Post(content)));
         postRepository.findAll().forEach(System.out::println);
     }
