@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import App from './App';
 import Home from './Home';
+import BackHome from './pages/BackHome';
 import SignUpForm from './pages/SignUpForm';
 import SignInForm from './pages/SignInForm';
 import { BrowserRouter, Route, Link } from "react-router-dom";
@@ -76,6 +77,8 @@ class Routerr extends Component {
           <div className="main-route-place">
             <Route exact path="/"  component={Home}/>
             <Route path="/sign-in" component={App} />
+            <Route path="/back" component={BackHome} />
+
           </div>
         </div>
       </BrowserRouter>

@@ -5,8 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+
 //import { spacing } from '@material-ui/system';
-const url = 'http://localhost:8080/api/customer/signup';
+const url = 'http://localhost:8080/api/customer/sign-up';
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(2),
@@ -23,6 +24,7 @@ function ButtonAppBar() {
           <Button variant="primary"><Link to="/sign-in">Login</Link></Button>
         </Toolbar>
       </AppBar>
+      <p> djeifjenurjfroegrugrofnewodmwfneugjv </p>
     </div>
   );
 }

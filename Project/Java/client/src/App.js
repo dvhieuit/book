@@ -4,10 +4,10 @@ import SignUpForm from './pages/SignUpForm';
 import SignInForm from './pages/SignInForm';
 import './App.css';
 
+
 class App extends Component {
   render() {
     return (
-    <Router>
       <div className="App">
  		<div className="App__Aside"></div>	
  		<div className="App__Form">
@@ -23,22 +23,16 @@ class App extends Component {
 
  		</div>
 
-
  	<Route path="/sign-in" component = {SignInForm} >
-
-
  	</Route>
 
  	<Route exact path="/sign-up" component= {SignUpForm}>		
- 		
  	</Route>
- 		
 
-
+ 	
 
  		</div>	
       </div>
-  	</Router>
     );
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
+import BackHome from './BackHome';
 class SignInForm extends Component {
 
 	constructor() {
@@ -50,7 +51,7 @@ class SignInForm extends Component {
 	      break;
 	    case 'password':
 	      passwordValid = value.length >= 6;
-	      fieldValidationErrors.password = passwordValid ? '': ' is too short';
+	      fieldValidationErrors.password = passwordValid ? '': ' Is too short';
 	      break;
 	    default:
 	      break;
@@ -68,24 +69,25 @@ class SignInForm extends Component {
 			render() {
 			return (
 				<div className="FormCenter">
-	 			<form className="FormField" onSubmit={this.handleSubmit}>
-	 				<div class="FormField">
-	 					<label className="FormField__Label" htmlFor="email">Email Address</label>
-	 					<input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange}/>
-	 				</div>
-	 			</form>
+		 			<form className="FormField" onSubmit={this.handleSubmit}>
+		 				<div class="FormField">
+		 					<label className="FormField__Label" htmlFor="email">Email Address</label>
+		 					<input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange}/>
+		 				</div>
+		 			</form>
 
-	 			<form className="FormField" onSubmit={this.handleSubmit}>
-	 				<div class="FormField">
-	 					<label className="FormField__Label" htmlFor="password">Password</label>
-	 					<input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}/>
-	 				</div>
-	 			</form>
-	 			
-	 			<div class="FormField">
-	 				<Link to="/sign-up"><button type ="submit" className="FormField__Button mr-20" disabled={!this.state.formValid}>Sign In</button> </Link><Link to="/sign-up" className="FormField__Link">Create an account</Link>
-	  			</div>		
-	 		</div>
+		 			<form className="FormField" onSubmit={this.handleSubmit}>
+		 				<div class="FormField">
+		 					<label className="FormField__Label" htmlFor="password">Password</label>
+		 					<input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}/>
+		 				</div>
+		 			</form>
+		 			
+		 			<div class="FormField">
+		 				<Link to="/back"><button type ="submit" className="FormField__Button mr-20" disabled={!this.state.formValid}>Sign In</button> </Link><Link to="/sign-up" className="FormField__Link">Create an account</Link>		
+		  			</div>	
+
+	  			</div>
 
 				);
 		}
